@@ -268,8 +268,11 @@ button,input,select,textarea{font:inherit;color:inherit}
 .aae-nav__phone:hover{color:var(--text-link)}
 .aae-nav__toggle{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-2);margin-left:auto;min-height:var(--tap-min);min-width:var(--tap-min);padding-inline:var(--sp-3);background:var(--aae-navy);color:var(--aae-white);border:0;border-radius:var(--radius);font-family:var(--font-display);font-size:13px;font-weight:var(--fw-semibold);text-transform:uppercase;letter-spacing:.06em;cursor:pointer}
 @media (min-width:1240px){.aae-nav__links,.aae-nav__actions{display:flex}.aae-nav__toggle{display:none}}
-.aae-nav__backdrop{position:fixed;inset:0;z-index:70;background:rgba(15,15,20,.55);border:0;padding:0}
-.aae-drawer{position:fixed;inset:0 0 0 auto;z-index:80;width:min(88vw,360px);display:flex;flex-direction:column;background:var(--aae-white);box-shadow:var(--shadow-raised)}
+.aae-nav__backdrop{position:fixed;inset:0;z-index:190;background:rgba(15,15,20,.55);border:0;padding:0;touch-action:none;opacity:0;transition:opacity var(--dur) var(--ease)}
+.aae-nav__backdrop.is-open{opacity:1}
+.aae-drawer{position:fixed;inset:0 0 0 auto;z-index:200;width:min(88vw,360px);display:flex;flex-direction:column;background:var(--aae-white);box-shadow:var(--shadow-raised);transform:translateX(100%);transition:transform var(--dur-slow) var(--ease)}
+.aae-drawer.is-open{transform:translateX(0)}
+@media (prefers-reduced-motion:reduce){.aae-drawer,.aae-nav__backdrop{transition:none}}
 .aae-drawer__top{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);padding-inline:20px;border-bottom:1px solid var(--border-default)}
 .aae-drawer__close{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-2);min-height:var(--tap-min);padding-inline:var(--sp-3);background:transparent;border:1px solid var(--border-strong);border-radius:var(--radius);color:var(--aae-navy);font-family:var(--font-display);font-size:13px;font-weight:var(--fw-semibold);text-transform:uppercase;letter-spacing:.06em;cursor:pointer}
 .aae-drawer__close:hover{background:var(--surface-tint)}
@@ -431,8 +434,9 @@ button,input,select,textarea{font:inherit;color:inherit}
 .aae-footer__brand b{display:block;font-family:var(--font-display);font-weight:var(--fw-bold);font-size:var(--fs-h4);color:var(--aae-white);text-transform:uppercase;letter-spacing:-.01em}
 .aae-footer__brand p{margin-top:var(--sp-2);max-width:34ch;text-wrap:pretty}
 .aae-footer__col h3{font-family:var(--font-mono);font-size:var(--fs-eyebrow);font-weight:var(--fw-regular);letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--aae-white);opacity:.7}
-.aae-footer__col ul{display:flex;flex-direction:column;gap:var(--sp-3);margin:var(--sp-4) 0 0;padding:0;list-style:none}
-.aae-footer__col a{display:inline-flex;min-height:24px;align-items:center;border:0;color:var(--text-on-dark-secondary);text-decoration:none}
+.aae-footer__col ul{display:flex;flex-direction:column;gap:0;margin:var(--sp-3) 0 0;padding:0;list-style:none}
+.aae-footer__col a{display:inline-flex;min-height:var(--tap-min);align-items:center;border:0;color:var(--text-on-dark-secondary);text-decoration:none}
+@media (min-width:1024px){.aae-footer__col ul{gap:var(--sp-3);margin-top:var(--sp-4)}.aae-footer__col a{min-height:24px}}
 .aae-footer__col a:hover{color:var(--aae-white)}
 .aae-footer__bottom{display:flex;flex-wrap:wrap;gap:var(--sp-3) var(--sp-5);justify-content:space-between;margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(--border-inverse);font-family:var(--font-mono);font-size:var(--fs-caption);color:#9C9AB8}
 
@@ -440,6 +444,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .aae-whatsapp{position:fixed;right:16px;bottom:16px;z-index:50;display:inline-flex;align-items:center;gap:var(--sp-2);min-height:52px;padding:0 var(--sp-5);background:var(--aae-navy);color:var(--aae-white);border:0;border-radius:var(--radius);box-shadow:var(--shadow-raised);font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-body-sm);text-decoration:none}
 .aae-whatsapp:hover{background:var(--aae-navy-hover);color:var(--aae-white)}
 @media (min-width:1024px){.aae-whatsapp{right:24px;bottom:24px}}
+body.is-locked .aae-whatsapp{opacity:0;pointer-events:none;transition:opacity var(--dur) var(--ease)}
 
 /* ---------- Image placeholder slot ---------- */
 .aae-slot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--sp-2);padding:var(--sp-5);background:var(--surface-tint);border:1px dashed var(--border-strong);border-radius:var(--radius);text-align:center;color:var(--text-muted)}
@@ -474,6 +479,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .aae-subcap p{margin-top:var(--sp-3);color:var(--text-secondary);max-width:var(--measure);text-wrap:pretty}
 
 /* ---------- Nav: every desktop label stays on one line, aligned to the content grid ---------- */
+/* The seven-item bar needs 1095px; below 1240px viewport the drawer is used instead. */
 @media (min-width:1240px){.aae-nav__links{gap:20px}.aae-nav__link{font-size:14px}.aae-nav__actions{margin-left:var(--sp-4)}}
 @media (min-width:1400px){.aae-nav__links{gap:var(--sp-5)}.aae-nav__link{font-size:15px}}
 
@@ -510,6 +516,9 @@ button,input,select,textarea{font:inherit;color:inherit}
 .aae-icon svg,svg.lucide{display:block}
 .aae-btn svg,.aae-nav__phone svg,.aae-whatsapp svg,.aae-drawer__link svg,.aae-drawer__close svg,.aae-nav__toggle svg,.aae-servicecard__link svg{width:1em;height:1em;flex:none}
 .aae-cap__icon svg{width:22px;height:22px}
-.aae-skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--aae-navy);color:#fff;padding:12px 16px;border-radius:var(--radius)}
+.aae-skip{position:absolute;left:-9999px;top:0;z-index:300;background:var(--aae-navy);color:#fff;padding:12px 16px;border-radius:var(--radius)}
 .aae-skip:focus{left:var(--sp-4);top:var(--sp-2)}
-body.is-locked{overflow:hidden}
+/* body scroll lock: position-fixed with a saved offset, so the page does not jump */
+body.is-locked{position:fixed;left:0;right:0;width:100%;overflow:hidden}
+/* inline prose links keep a comfortable target on touch */
+.aae-section p a,.aae-form__footnote a{padding-block:6px}

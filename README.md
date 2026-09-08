@@ -7,15 +7,17 @@ site/
 ├── index.html          Home
 ├── about.html          About
 ├── capability.html     Capability & plant
-├── projects.html       Project references
+├── projects.html       Project references (no photographs, by design)
 ├── hse.html            HSE & worker welfare
+├── equipment-hire.html Air compressor hire (PDS 655 / PDS 390)
 ├── rfq.html            Request a quotation
 ├── contact.html        Contact (same form + contact block)
 ├── 404.html            Not found
 ├── services/
-│   ├── index.html      Services index
-│   ├── insulation.html
+│   ├── index.html      Services hub — 6 cards + equipment-hire band
 │   ├── surface-protection.html
+│   ├── insulation.html
+│   ├── deck-covering.html
 │   ├── fabrication.html
 │   ├── cable-tray.html
 │   └── scaffolding.html
@@ -53,6 +55,12 @@ Build Command **empty**, Output Directory **empty** (or `.`), Root Directory **e
 - **Project references are illustrative.** Customer names are real; the scopes, years and
   reference numbers in `projects.html` and on the home page are placeholders. Replace them
   with real records before publishing.
+- **Insulation and cable-tray photographs are still missing.** The v2 image pack's two
+  insulation photos are CC BY-SA 4.0 (attribution required), so they are deliberately NOT
+  wired in — the pack's own README advises against them and an attribution line on a
+  contractor's service page reads badly. Those slots, plus the cable-tray, scaffolding-hero,
+  capability-plant and compressor slots, render as clearly-marked dashed placeholders at the
+  correct aspect ratio. Drop a real file in at the named path and the layout does not change.
 - **Icons load from a CDN** (`unpkg.com/lucide@0.544.0`). For reliable performance on 4G in
   Pakistan, download that file into `assets/` and change the `<script src>` on every page.
 - **Fonts load from Google Fonts** (Archivo, Inter, IBM Plex Mono) via the `@import` at the

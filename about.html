@@ -3,12 +3,615 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>About — Al-Ashfaq Enterprises</title>
-<meta name="description" content="Industrial services contractor operating from West Wharf Road, Karachi since 1998. 66 directly employed tradesmen, over 300 projects delivered.">
+<meta name="description" content="Ship repair and industrial services contractor operating from West Wharf Road, Karachi since 1998. 66 directly employed tradesmen, over 300 projects delivered.">
 <link rel="icon" href="assets/logo.png">
-<link rel="stylesheet" href="styles.css?v=3">
+<style>/* Webfonts. No binaries were supplied with the brand pack, so the three families
+   are loaded from Google Fonts. Archivo / Inter / IBM Plex Mono are all Google
+   Fonts originals, so this is the authentic source, not a substitution. */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+/* ===== tokens/colors.css ===== */
+:root{
+  /* Base palette — taken from the logo. Do not extend this list. */
+  --aae-navy:#262261;
+  --aae-navy-deep:#16143A;
+  --aae-navy-tint:#EEEEF5;
+  --aae-orange:#E4661A;
+  --aae-ink:#0F0F14;
+  --aae-grey-600:#4A4A55;
+  --aae-grey-400:#8A8A96;
+  --aae-border:#E2E2E8;
+  --aae-surface:#F7F7F9;
+  --aae-white:#FFFFFF;
+
+  /* Derived states — hover/press only, no new hues */
+  --aae-navy-hover:#1E1A50;
+  --aae-navy-press:#16143A;
+  --aae-orange-hover:#C9550F;
+  --aae-orange-press:#AE480B;
+  --aae-navy-tint-hover:#E4E4EF;
+
+  /* Semantic: text */
+  --text-primary:var(--aae-ink);
+  --text-secondary:var(--aae-grey-600);
+  --text-muted:var(--aae-grey-400);
+  --text-on-dark:var(--aae-white);
+  --text-on-dark-secondary:#C7C6DA;
+  --text-brand:var(--aae-navy);
+  --text-link:var(--aae-orange);
+  --text-link-hover:var(--aae-orange-hover);
+
+  /* Semantic: surfaces */
+  --surface-page:var(--aae-white);
+  --surface-subtle:var(--aae-surface);
+  --surface-tint:var(--aae-navy-tint);
+  --surface-card:var(--aae-white);
+  --surface-inverse:var(--aae-navy);
+  --surface-inverse-deep:var(--aae-navy-deep);
+
+  /* Semantic: lines */
+  --border-default:var(--aae-border);
+  --border-strong:#C9C9D4;
+  --border-inverse:rgba(255,255,255,.18);
+  --rule-accent:var(--aae-orange);
+
+  /* Semantic: interactive */
+  --action-primary-bg:var(--aae-orange);
+  --action-primary-bg-hover:var(--aae-orange-hover);
+  --action-primary-bg-press:var(--aae-orange-press);
+  --action-primary-fg:var(--aae-white);
+  --action-secondary-bg:var(--aae-navy);
+  --action-secondary-fg:var(--aae-white);
+  --action-ghost-fg:var(--aae-navy);
+  --action-disabled-bg:var(--aae-border);
+  --action-disabled-fg:var(--aae-grey-400);
+  --focus-ring:var(--aae-orange);
+
+  /* Status — reuses brand palette only */
+  --status-ok:var(--aae-navy);
+  --status-attention:var(--aae-orange);
+  --status-neutral:var(--aae-grey-400);
+}
+
+/* ===== tokens/typography.css ===== */
+:root{
+  --font-display:"Archivo","Archivo Narrow","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Inter","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+  --fw-regular:400; /* @kind font */
+  --fw-medium:500; /* @kind font */
+  --fw-semibold:600; /* @kind font */
+  --fw-bold:700; /* @kind font */
+
+  /* Display / heading scale (Archivo, tight tracking) */
+  --fs-display:clamp(38px,6vw,64px); /* @kind font */
+  --fs-h1:clamp(32px,5vw,52px); /* @kind font */
+  --fs-h2:clamp(26px,3.4vw,38px); /* @kind font */
+  --fs-h3:clamp(21px,2.4vw,26px); /* @kind font */
+  --fs-h4:18px; /* @kind font */
+
+  /* Body scale (Inter) */
+  --fs-lead:clamp(17px,1.6vw,20px); /* @kind font */
+  --fs-body:16px; /* @kind font */
+  --fs-body-sm:15px; /* @kind font */
+  --fs-caption:13px; /* @kind font */
+
+  /* Mono / spec data */
+  --fs-spec:14px; /* @kind font */
+  --fs-eyebrow:12px; /* @kind font */
+
+  --lh-tight:1.06; /* @kind font */
+  --lh-heading:1.16; /* @kind font */
+  --lh-body:1.6; /* @kind font */
+  --lh-relaxed:1.7; /* @kind font */
+
+  --ls-display:-0.02em; /* @kind font */
+  --ls-heading:-0.015em; /* @kind font */
+  --ls-body:0; /* @kind font */
+  --ls-eyebrow:0.12em; /* @kind font */
+  --ls-spec:0.01em; /* @kind font */
+}
+
+/* ===== tokens/spacing.css ===== */
+:root{
+  /* 8px scale (4px half-step allowed for icon/label gaps only) */
+  --sp-0:0px; /* @kind spacing */
+  --sp-1:4px;
+  --sp-2:8px;
+  --sp-3:12px;
+  --sp-4:16px;
+  --sp-5:24px;
+  --sp-6:32px;
+  --sp-7:40px;
+  --sp-8:48px;
+  --sp-9:64px;
+  --sp-10:80px;
+  --sp-11:96px;
+  --sp-12:120px;
+
+  /* Section rhythm: 80px mobile / 120px desktop */
+  --section-y:clamp(80px,10vw,120px); /* @kind spacing */
+  --section-y-tight:clamp(48px,6vw,72px); /* @kind spacing */
+
+  /* Radii — 4px maximum. Never pills. */
+  --radius-sm:2px;
+  --radius:4px;
+  --radius-none:0;
+}
+
+/* ===== tokens/layout.css ===== */
+:root{
+  --content-max:1280px;
+  --nav-max:var(--content-max);   /* nav shares the content container so every left edge lines up */
+  --nav-gutter:var(--gutter);
+  --measure:68ch; /* @kind other */
+  --gutter:20px;             /* mobile */
+  --nav-h:76px;
+  --tap-min:44px;
+
+  /* Breakpoints, documented as tokens for reference */
+  --bp-sm:360px; /* @kind other */
+  --bp-md:768px; /* @kind other */
+  --bp-lg:1024px; /* @kind other */
+  --bp-xl:1440px; /* @kind other */
+
+  /* Shadows — used sparingly: nav on scroll, mobile drawer, dropdowns.
+     Cards use borders, not shadows. */
+  --shadow-none:none;
+  --shadow-nav:0 1px 0 var(--border-default);
+  --shadow-raised:0 1px 2px rgba(15,15,20,.06),0 8px 24px rgba(15,15,20,.08);
+  --shadow-drawer:0 0 0 100vmax rgba(15,15,20,.55);
+  --shadow-focus:0 0 0 3px rgba(228,102,26,.35);
+
+  /* Image slot aspect ratios */
+  --ratio-hero:16/9; /* @kind other */
+  --ratio-card:4/3; /* @kind other */
+  --ratio-work:3/2; /* @kind other */
+  --ratio-portrait:3/4; /* @kind other */
+}
+@media (min-width:768px){:root{--gutter:40px}}
+/* 56px rather than 80px from 1024up: the seven-item nav and the content share one
+   container, and 56 is the widest gutter that still fits the nav on a single line. */
+@media (min-width:1024px){:root{--gutter:56px;--nav-h:88px}}
+
+/* ===== tokens/motion.css ===== */
+:root{
+  /* Restrained motion only: fade-up on scroll, colour transitions on hover. */
+  --dur-fast:120ms; /* @kind other */
+  --dur:180ms; /* @kind other */
+  --dur-slow:320ms; /* @kind other */
+  --dur-reveal:480ms; /* @kind other */
+  --ease:cubic-bezier(.2,0,.2,1); /* @kind other */
+  --ease-out:cubic-bezier(0,0,.2,1); /* @kind other */
+  --reveal-shift:12px; /* @kind other */
+}
+@media (prefers-reduced-motion:reduce){
+  :root{--dur-fast:0ms; /* @kind other */--dur:0ms; /* @kind other */--dur-slow:0ms; /* @kind other */--dur-reveal:0ms; /* @kind other */--reveal-shift:0px}
+}
+
+/* ===== tokens/base.css ===== */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-body);font-size:var(--fs-body);line-height:var(--lh-body);font-weight:var(--fw-regular);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-display);font-weight:var(--fw-semibold);line-height:var(--lh-heading);letter-spacing:var(--ls-heading);color:var(--aae-navy);margin:0}
+p{margin:0}
+a{color:var(--text-link);text-decoration:none;border-bottom:1px solid currentColor;transition:color var(--dur) var(--ease)}
+a:hover{color:var(--text-link-hover)}
+img{display:block;max-width:100%;height:auto}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+::selection{background:var(--aae-navy);color:var(--aae-white)}
+.aae-eyebrow{font-family:var(--font-mono);font-size:var(--fs-eyebrow);letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--text-secondary)}
+.aae-spec{font-family:var(--font-mono);font-size:var(--fs-spec);letter-spacing:var(--ls-spec);font-variant-numeric:tabular-nums}
+.aae-container{max-width:var(--content-max);margin:0 auto;padding-inline:var(--gutter)}
+.aae-reveal{opacity:1}
+@keyframes aae-rise-in{from{opacity:0;transform:translateY(var(--reveal-shift))}to{opacity:1;transform:none}}
+@supports (animation-timeline:view()){.aae-reveal{animation:aae-rise-in 1s linear both;animation-timeline:view();animation-range:entry 0% cover 20%}}
+@supports not (animation-timeline:view()){.aae-reveal{opacity:0;transform:translateY(var(--reveal-shift));transition:opacity var(--dur-reveal) var(--ease-out),transform var(--dur-reveal) var(--ease-out)}.aae-reveal.is-visible{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.aae-reveal{animation:none;opacity:1;transform:none}}
+
+/* ===== components/aae-components.css ===== */
+/* Al-Ashfaq Enterprises — component styles. Consumed by the React components in
+   components/**. Class names are all `aae-` prefixed. */
+
+/* ---------- Button ---------- */
+.aae-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-2);min-height:var(--tap-min);padding:12px var(--sp-5);border:1px solid transparent;border-radius:var(--radius);font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-body-sm);letter-spacing:.01em;text-decoration:none;cursor:pointer;white-space:nowrap;transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.aae-btn--primary{background:var(--action-primary-bg);color:var(--action-primary-fg)}
+.aae-btn--primary:hover{background:var(--action-primary-bg-hover)}
+.aae-btn--primary:active{background:var(--action-primary-bg-press)}
+.aae-btn--secondary{background:var(--action-secondary-bg);color:var(--action-secondary-fg)}
+.aae-btn--secondary:hover{background:var(--aae-navy-hover)}
+.aae-btn--secondary:active{background:var(--aae-navy-press)}
+.aae-btn--outline{background:transparent;color:var(--aae-navy);border-color:var(--border-strong)}
+.aae-btn--outline:hover{background:var(--surface-tint);border-color:var(--aae-navy)}
+.aae-btn--outline-inverse{background:transparent;color:var(--aae-white);border-color:rgba(255,255,255,.45)}
+.aae-btn--outline-inverse:hover{background:rgba(255,255,255,.1);border-color:var(--aae-white)}
+.aae-btn--ghost{background:transparent;color:var(--action-ghost-fg);padding-inline:var(--sp-2)}
+.aae-btn--ghost:hover{color:var(--text-link)}
+.aae-btn--sm{min-height:36px;padding:8px var(--sp-4);font-size:var(--fs-caption)}
+.aae-btn--lg{min-height:52px;padding:14px var(--sp-6);font-size:var(--fs-body)}
+.aae-btn--block{width:100%}
+.aae-btn[disabled],.aae-btn--disabled{background:var(--action-disabled-bg);color:var(--action-disabled-fg);border-color:transparent;cursor:not-allowed}
+.aae-btn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+.aae-btn--outline-inverse:focus-visible,.aae-btn--primary:focus-visible{outline-color:var(--aae-white)}
+
+/* ---------- Icon ---------- */
+.aae-icon{display:inline-block;flex:none;background-color:currentColor;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
+.aae-icon--svg{background:none;color:inherit}
+
+/* ---------- Section scaffolding ---------- */
+.aae-container{max-width:var(--content-max);margin-inline:auto;padding-inline:var(--gutter)}
+.aae-section{padding-block:var(--section-y)}
+.aae-section--tint{background:var(--surface-tint)}
+.aae-section--subtle{background:var(--surface-subtle)}
+.aae-section--navy{background:var(--surface-inverse);color:var(--text-on-dark)}
+.aae-section--navy h1,.aae-section--navy h2,.aae-section--navy h3{color:var(--aae-white)}
+.aae-sectionhead{display:flex;flex-direction:column;gap:var(--sp-3);max-width:760px}
+.aae-sectionhead__rule{width:48px;height:3px;background:var(--rule-accent);transform-origin:left;animation:aae-draw var(--dur-slow) var(--ease-out) both}
+@keyframes aae-draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.aae-sectionhead h2{font-size:var(--fs-h2)}
+.aae-sectionhead p{color:var(--text-secondary);font-size:var(--fs-lead);max-width:var(--measure);text-wrap:pretty}
+.aae-section--navy .aae-sectionhead p{color:var(--text-on-dark-secondary)}
+
+/* ---------- Nav ---------- */
+.aae-nav{position:sticky;top:0;z-index:60;background:var(--aae-white);border-bottom:1px solid var(--border-default)}
+.aae-nav__bar{display:flex;align-items:center;gap:var(--sp-4);height:var(--nav-h);max-width:var(--nav-max);margin-inline:auto;padding-inline:var(--nav-gutter)}
+.aae-nav__brand{flex:none}
+.aae-nav__brand{display:flex;align-items:center;gap:var(--sp-3);border:0;text-decoration:none;color:var(--aae-navy)}
+.aae-nav__brand img{width:52px;height:52px;transition:transform var(--dur-slow) var(--ease)}
+.aae-nav__brand:hover img{transform:rotate(-12deg)}
+.aae-nav__brandtext{display:flex;flex-direction:column;line-height:1.1;white-space:nowrap}
+.aae-nav__brandtext b{font-family:var(--font-display);font-weight:var(--fw-bold);font-size:15px;letter-spacing:-.01em;text-transform:uppercase}
+.aae-nav__brandtext span{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.aae-nav__links{display:none;align-items:center;gap:var(--sp-5);margin-left:auto;white-space:nowrap}
+.aae-nav__link{display:inline-flex;align-items:center;height:var(--nav-h);border:0;font-family:var(--font-display);font-weight:var(--fw-medium);font-size:15px;color:var(--aae-navy);text-decoration:none;position:relative}
+.aae-nav__link::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--rule-accent);transform:scaleX(0);transform-origin:left;transition:transform var(--dur-slow) var(--ease)}
+.aae-nav__link:hover{color:var(--text-link)}
+.aae-nav__link:hover::after{transform:scaleX(1)}
+.aae-nav__link[aria-current="page"]::after{background:var(--aae-navy);transform:scaleX(1)}
+.aae-nav__actions{display:none;align-items:center;gap:var(--sp-3);margin-left:var(--sp-5);flex:none;white-space:nowrap}
+.aae-nav__phone{display:inline-flex;align-items:center;gap:var(--sp-2);border:0;font-family:var(--font-mono);font-size:var(--fs-spec);color:var(--aae-navy);text-decoration:none;white-space:nowrap}
+.aae-nav__phone:hover{color:var(--text-link)}
+.aae-nav__toggle{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-2);margin-left:auto;min-height:var(--tap-min);min-width:var(--tap-min);padding-inline:var(--sp-3);background:var(--aae-navy);color:var(--aae-white);border:0;border-radius:var(--radius);font-family:var(--font-display);font-size:13px;font-weight:var(--fw-semibold);text-transform:uppercase;letter-spacing:.06em;cursor:pointer}
+@media (min-width:1240px){.aae-nav__links,.aae-nav__actions{display:flex}.aae-nav__toggle{display:none}}
+.aae-nav__backdrop{position:fixed;inset:0;z-index:190;background:rgba(15,15,20,.55);border:0;padding:0;touch-action:none}
+.aae-nav__backdrop:not([hidden]){animation:aae-fade-in var(--dur) var(--ease) both}
+/* Visibility depends ONLY on the [hidden] attribute — never on a class. The slide-in
+   is a decorative animation on appearance, so if anything stops the animation the
+   drawer is still fully on screen and usable. */
+.aae-drawer{position:fixed;inset:0 0 0 auto;z-index:200;width:min(88vw,360px);display:flex;flex-direction:column;background:var(--aae-white);box-shadow:var(--shadow-raised)}
+.aae-drawer:not([hidden]){animation:aae-slide-in var(--dur-slow) var(--ease) both}
+@keyframes aae-slide-in{from{transform:translateX(100%)}to{transform:translateX(0)}}
+@keyframes aae-fade-in{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.aae-drawer:not([hidden]),.aae-nav__backdrop:not([hidden]){animation:none}}
+.aae-drawer__top{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);padding-inline:20px;border-bottom:1px solid var(--border-default)}
+.aae-drawer__close{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-2);min-height:var(--tap-min);padding-inline:var(--sp-3);background:transparent;border:1px solid var(--border-strong);border-radius:var(--radius);color:var(--aae-navy);font-family:var(--font-display);font-size:13px;font-weight:var(--fw-semibold);text-transform:uppercase;letter-spacing:.06em;cursor:pointer}
+.aae-drawer__close:hover{background:var(--surface-tint)}
+.aae-drawer__links{display:flex;flex-direction:column;overflow-y:auto;padding:var(--sp-2) 0}
+.aae-drawer__link{display:flex;align-items:center;justify-content:space-between;min-height:52px;padding-inline:20px;border:0;border-bottom:1px solid var(--border-default);font-family:var(--font-display);font-weight:var(--fw-medium);font-size:17px;color:var(--aae-navy);text-decoration:none}
+.aae-drawer__link:hover{background:var(--surface-tint)}
+.aae-drawer__foot{margin-top:auto;display:grid;gap:var(--sp-2);padding:20px;border-top:1px solid var(--border-default)}
+
+/* ---------- Hero ---------- */
+.aae-hero{position:relative;background:var(--surface-inverse-deep);color:var(--aae-white);overflow:hidden}
+.aae-hero__media{position:absolute;inset:0}
+.aae-hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;filter:saturate(.75);transition:opacity 1400ms var(--ease)}
+.aae-hero__media img.is-active{opacity:.42;animation:aae-kenburns 24s var(--ease-out) both}
+@keyframes aae-kenburns{from{transform:scale(1)}to{transform:scale(1.08)}}
+.aae-hero__inner>*{animation:aae-rise var(--dur-reveal) var(--ease-out) both}
+.aae-hero__inner>*:nth-child(2){animation-delay:60ms}
+.aae-hero__inner>*:nth-child(3){animation-delay:120ms}
+.aae-hero__inner>*:nth-child(4){animation-delay:180ms}
+@keyframes aae-rise{from{opacity:0;transform:translateY(var(--reveal-shift))}to{opacity:1;transform:none}}
+.aae-hero__scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,20,58,.94) 0%,rgba(22,20,58,.78) 55%,rgba(22,20,58,.55) 100%)}
+.aae-hero__inner{position:relative;max-width:var(--content-max);margin-inline:auto;padding:clamp(56px,9vw,112px) var(--gutter)}
+.aae-hero__eyebrow{color:var(--aae-white);opacity:.82}
+.aae-hero h1{margin-top:var(--sp-4);max-width:18ch;font-size:var(--fs-display);font-weight:var(--fw-bold);line-height:var(--lh-tight);letter-spacing:var(--ls-display);color:var(--aae-white);text-wrap:balance}
+.aae-hero__sub{margin-top:var(--sp-5);max-width:62ch;font-size:var(--fs-lead);line-height:var(--lh-body);color:#DAD9E8;text-wrap:pretty}
+.aae-hero__ctas{display:flex;flex-wrap:wrap;gap:var(--sp-3);margin-top:var(--sp-7)}
+.aae-hero__ctas .aae-btn{flex:1 1 auto;min-width:180px}
+@media (min-width:560px){.aae-hero__ctas .aae-btn{flex:0 0 auto}}
+.aae-hero--compact .aae-hero__inner{padding-block:clamp(40px,6vw,72px)}
+.aae-hero--compact h1{font-size:var(--fs-h1)}
+
+/* ---------- Hero: major variant ----------
+   Full-bleed maritime photograph under a rich navy gradient, with a faint
+   structural grid. Used on the homepage only; every other page keeps --compact. */
+.aae-hero--major{min-height:clamp(520px,78vh,760px);display:flex;align-items:flex-end}
+.aae-hero--major .aae-hero__media img.is-active{opacity:.8;filter:saturate(.5) contrast(1.14) brightness(.66)}
+.aae-hero--major .aae-hero__scrim{background:linear-gradient(100deg,rgba(11,10,30,.95) 0%,rgba(15,14,40,.86) 34%,rgba(22,20,58,.58) 68%,rgba(30,26,74,.34) 100%)}
+.aae-hero__grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:calc(100% / 6) 100%}
+.aae-hero__base{position:absolute;left:0;right:0;bottom:0;height:180px;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(15,14,40,.72))}
+.aae-hero--major .aae-hero__inner{width:100%;padding-block:clamp(72px,11vw,132px)}
+.aae-hero--major h1{max-width:16ch;font-size:clamp(38px,6.2vw,76px)}
+.aae-hero__badge{display:inline-flex;align-items:center;gap:var(--sp-3);align-self:flex-start;margin-bottom:var(--sp-5);padding:8px 14px;border:1px solid rgba(255,255,255,.28);border-radius:var(--radius);background:rgba(255,255,255,.07);font-family:var(--font-mono);font-size:var(--fs-spec);letter-spacing:.04em;color:var(--aae-white)}
+.aae-hero__badge b{color:var(--aae-orange);font-weight:var(--fw-medium)}
+.aae-hero__meta{display:flex;flex-wrap:wrap;gap:var(--sp-3) var(--sp-6);margin-top:var(--sp-7);padding-top:var(--sp-5);border-top:1px solid rgba(255,255,255,.16)}
+.aae-hero__metaitem{font-family:var(--font-mono);font-size:var(--fs-spec);color:#C9C7DE}
+.aae-hero__metaitem b{display:block;font-family:var(--font-display);font-size:22px;font-weight:var(--fw-bold);color:var(--aae-white);letter-spacing:var(--ls-display)}
+
+/* ---------- Sequenced service card ----------
+   The nine trades in ship-repair execution order. The step number is the
+   organising device: procurement buyers read the sequence, not the alphabet. */
+.aae-seq{display:grid;gap:var(--sp-4);grid-template-columns:1fr}
+@media (min-width:760px){.aae-seq{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.aae-seq{grid-template-columns:repeat(3,1fr)}}
+.aae-seqcard{position:relative;display:flex;flex-direction:column;background:var(--aae-white);text-decoration:none;border:1px solid var(--border-default);border-radius:var(--radius);overflow:hidden;transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.aae-seqcard:hover{border-color:var(--aae-navy);box-shadow:var(--shadow-raised);transform:translateY(-2px)}
+.aae-seqcard:focus-visible{outline:var(--focus-width) solid var(--focus-ring);outline-offset:-3px}
+.aae-seqcard__media{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--surface-tint)}
+.aae-seqcard__media img{width:100%;height:100%;object-fit:cover;transition:transform 700ms var(--ease-out)}
+.aae-seqcard:hover .aae-seqcard__media img{transform:scale(1.04)}
+.aae-seqcard__n{position:absolute;left:0;top:0;z-index:1;min-width:52px;padding:8px 12px;background:var(--aae-navy);color:var(--aae-white);font-family:var(--font-mono);font-size:var(--fs-spec);letter-spacing:.06em}
+.aae-seqcard__body{display:flex;flex-direction:column;gap:var(--sp-2);flex:1;padding:var(--sp-5)}
+.aae-seqcard__body h3{font-family:var(--font-display);font-size:var(--fs-h4);font-weight:var(--fw-semibold);color:var(--aae-ink);letter-spacing:var(--ls-tight);text-wrap:pretty}
+.aae-seqcard__body p{font-size:var(--fs-body-sm);color:var(--text-secondary);text-wrap:pretty}
+.aae-seqcard__go{display:inline-flex;align-items:center;gap:var(--sp-2);margin-top:auto;padding-top:var(--sp-4);font-family:var(--font-mono);font-size:var(--fs-spec);color:var(--aae-orange)}
+.aae-seqcard:hover .aae-seqcard__go{text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- Equipment callout ----------
+   Named plant, on a dark card, with its rating in mono. Buyers check the
+   compressor rating before anything else on a blasting tender. */
+.aae-equip{display:grid;gap:var(--sp-4);grid-template-columns:1fr}
+@media (min-width:720px){.aae-equip{grid-template-columns:repeat(2,1fr)}}
+.aae-equipcard{display:flex;flex-direction:column;gap:var(--sp-4);padding:var(--sp-6);border:1px solid var(--border-inverse);border-radius:var(--radius);background:linear-gradient(150deg,#1C1948 0%,#262261 100%)}
+.aae-equipcard__top{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-4)}
+.aae-equipcard__name{font-family:var(--font-display);font-size:var(--fs-h4);font-weight:var(--fw-bold);color:var(--aae-white);letter-spacing:var(--ls-tight)}
+.aae-equipcard__qty{flex:none;padding:6px 10px;border:1px solid rgba(255,255,255,.24);border-radius:var(--radius);font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--aae-white)}
+.aae-equipcard__rating{font-family:var(--font-display);font-size:clamp(32px,4.4vw,48px);font-weight:var(--fw-bold);line-height:1;letter-spacing:var(--ls-display);color:var(--aae-orange)}
+.aae-equipcard__rating span{font-family:var(--font-mono);font-size:var(--fs-spec);font-weight:400;color:#C9C7DE;letter-spacing:.06em}
+.aae-equipcard__rows{display:grid;gap:0;margin:0;padding:0;list-style:none}
+.aae-equipcard__rows li{display:flex;justify-content:space-between;gap:var(--sp-4);padding:10px 0;border-top:1px solid rgba(255,255,255,.14);font-family:var(--font-mono);font-size:var(--fs-spec);color:#C9C7DE}
+.aae-equipcard__rows b{font-weight:400;color:var(--aae-white);text-align:right}
+
+/* ---------- Stat bar ---------- */
+.aae-statbar{border-block:1px solid var(--border-default);background:var(--aae-white)}
+.aae-statbar--navy{background:var(--surface-inverse);border-color:var(--border-inverse)}
+.aae-statbar__grid{display:grid;grid-template-columns:1fr;max-width:var(--content-max);margin-inline:auto;padding-inline:var(--gutter)}
+@media (min-width:768px){.aae-statbar__grid{grid-template-columns:repeat(4,1fr)}}
+.aae-stat{padding:var(--sp-5) 0;border-bottom:1px solid var(--border-default)}
+@media (min-width:768px){.aae-stat{position:relative;padding:var(--sp-6) var(--sp-5) var(--sp-6) 0;border-bottom:0}.aae-stat+.aae-stat{padding-left:var(--sp-5)}.aae-stat+.aae-stat::before{content:"";position:absolute;left:0;top:var(--sp-6);bottom:var(--sp-6);width:1px;background:var(--border-default)}}
+.aae-statbar--navy .aae-stat{border-color:var(--border-inverse)}
+.aae-statbar--navy .aae-stat+.aae-stat::before{background:var(--border-inverse)}
+.aae-stat:last-child{border-bottom:0}
+.aae-stat__figure{font-family:var(--font-display);font-weight:var(--fw-bold);font-size:clamp(30px,3.6vw,44px);line-height:1;letter-spacing:var(--ls-display);color:var(--aae-navy)}
+.aae-statbar--navy .aae-stat__figure{color:var(--aae-white)}
+.aae-stat__label{margin-top:var(--sp-2);font-size:var(--fs-body-sm);color:var(--text-secondary);max-width:28ch;text-wrap:pretty}
+.aae-statbar--navy .aae-stat__label{color:var(--text-on-dark-secondary)}
+
+/* ---------- Service card ---------- */
+.aae-servicecard{display:flex;flex-direction:column;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius);transition:border-color var(--dur) var(--ease)}
+.aae-servicecard:hover{border-color:var(--aae-navy)}
+.aae-servicecard__media{aspect-ratio:var(--ratio-card);background:var(--surface-tint);overflow:hidden;border-bottom:1px solid var(--border-default)}
+.aae-servicecard__media img{width:100%;height:100%;object-fit:cover;transition:transform 700ms var(--ease)}
+.aae-servicecard:hover .aae-servicecard__media img{transform:scale(1.05)}
+.aae-servicecard__icon{transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease)}
+.aae-servicecard:hover .aae-servicecard__icon{background:var(--aae-navy);color:var(--aae-white)}
+.aae-servicecard__body{display:flex;flex-direction:column;gap:var(--sp-3);padding:var(--sp-5);flex:1}
+.aae-servicecard__icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--surface-tint);color:var(--aae-navy);border-radius:var(--radius)}
+.aae-servicecard h3{font-size:var(--fs-h3)}
+.aae-servicecard__desc{color:var(--text-secondary);font-size:var(--fs-body-sm);text-wrap:pretty}
+.aae-servicecard__list{display:flex;flex-direction:column;gap:var(--sp-2);margin:var(--sp-2) 0 0;padding:var(--sp-4) 0 0;list-style:none;border-top:1px solid var(--border-default)}
+.aae-servicecard__list li{display:flex;gap:var(--sp-2);font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--text-secondary)}
+.aae-servicecard__list li::before{content:"—";color:var(--rule-accent)}
+.aae-servicecard__link{margin-top:auto;padding-top:var(--sp-5);display:inline-flex;align-items:center;gap:var(--sp-2);border:0;font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-body-sm);color:var(--text-link);text-decoration:none}
+.aae-servicecard__link:hover{color:var(--text-link-hover)}
+.aae-servicecard__link .aae-icon{transition:transform var(--dur) var(--ease)}
+.aae-servicecard:hover .aae-servicecard__link .aae-icon,.aae-servicecard__link:hover .aae-icon{transform:translateX(4px)}
+.aae-btn .aae-icon{transition:transform var(--dur) var(--ease)}
+.aae-btn:hover .aae-icon:last-child{transform:translateX(3px)}
+.aae-cap{transition:background-color var(--dur) var(--ease)}
+.aae-cap:hover{background:var(--surface-tint)}
+.aae-cap__icon{transition:transform var(--dur-slow) var(--ease)}
+.aae-cap:hover .aae-cap__icon{transform:translateY(-2px)}
+.aae-projectcard{transition:border-color var(--dur) var(--ease)}
+.aae-projectcard:hover{border-color:var(--aae-navy)}
+.aae-step{transition:border-top-color var(--dur) var(--ease)}
+.aae-step:hover{border-top-color:var(--rule-accent)}
+.aae-whatsapp{transition:background-color var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.aae-whatsapp:hover{transform:translateY(-2px)}
+
+/* ---------- Project reference card ---------- */
+.aae-projectcard{display:grid;gap:0;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius);overflow:hidden}
+.aae-projectcard__row{display:grid;grid-template-columns:104px 1fr;gap:var(--sp-4);padding:var(--sp-4) var(--sp-5);border-bottom:1px solid var(--border-default)}
+.aae-projectcard__row:last-child{border-bottom:0}
+.aae-projectcard__k{font-family:var(--font-mono);font-size:var(--fs-eyebrow);letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--text-muted);padding-top:2px}
+.aae-projectcard__v{font-size:var(--fs-body-sm);color:var(--text-primary)}
+.aae-projectcard__v strong{font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-h4);color:var(--aae-navy)}
+.aae-projectcard__tags{display:flex;flex-wrap:wrap;gap:var(--sp-2)}
+.aae-tag{display:inline-flex;align-items:center;padding:3px var(--sp-2);background:var(--surface-tint);color:var(--aae-navy);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:var(--fs-eyebrow);letter-spacing:.04em}
+.aae-projectcard__year{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+
+/* ---------- Process steps ---------- */
+.aae-process{display:grid;gap:var(--sp-5);grid-template-columns:1fr;counter-reset:step}
+@media (min-width:768px){.aae-process{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.aae-process{grid-template-columns:repeat(4,1fr);gap:0}}
+.aae-step{position:relative;padding-top:var(--sp-5);border-top:3px solid var(--aae-navy)}
+@media (min-width:1024px){.aae-step{padding-right:var(--sp-6)}}
+.aae-step__n{font-family:var(--font-mono);font-size:var(--fs-eyebrow);letter-spacing:var(--ls-eyebrow);color:var(--rule-accent)}
+.aae-step h4{margin-top:var(--sp-2);font-size:var(--fs-h4);font-weight:var(--fw-semibold)}
+.aae-step p{margin-top:var(--sp-2);font-size:var(--fs-body-sm);color:var(--text-secondary);text-wrap:pretty}
+.aae-section--navy .aae-step{border-top-color:var(--rule-accent)}
+.aae-section--navy .aae-step p{color:var(--text-on-dark-secondary)}
+
+/* ---------- Spec table ---------- */
+.aae-spectable{width:100%;border-collapse:collapse;border:1px solid var(--border-default);background:var(--aae-white)}
+.aae-spectable caption{text-align:left;padding-bottom:var(--sp-3);font-family:var(--font-mono);font-size:var(--fs-eyebrow);letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--text-muted)}
+.aae-spectable th,.aae-spectable td{text-align:left;padding:var(--sp-3) var(--sp-4);border-bottom:1px solid var(--border-default);vertical-align:top}
+.aae-spectable thead th{background:var(--surface-tint);font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-caption);letter-spacing:.04em;text-transform:uppercase;color:var(--aae-navy);white-space:nowrap}
+.aae-spectable tbody th{font-family:var(--font-body);font-weight:var(--fw-medium);font-size:var(--fs-body-sm);color:var(--text-primary);white-space:nowrap}
+.aae-spectable td{font-family:var(--font-mono);font-size:var(--fs-spec);color:var(--text-secondary);font-variant-numeric:tabular-nums}
+.aae-spectable tbody tr:last-child th,.aae-spectable tbody tr:last-child td{border-bottom:0}
+.aae-spectable tbody tr:hover{background:var(--surface-subtle)}
+.aae-spectable__wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* ---------- Capability list ---------- */
+.aae-caplist{display:grid;gap:1px;list-style:none;margin:0;padding:0;background:var(--border-default);border:1px solid var(--border-default);border-radius:var(--radius);grid-template-columns:1fr}
+@media (min-width:768px){.aae-caplist{grid-template-columns:repeat(2,1fr)}.aae-caplist--1{grid-template-columns:1fr}}
+@media (min-width:1024px){.aae-caplist--3{grid-template-columns:repeat(3,1fr)}}
+.aae-cap{display:flex;gap:var(--sp-4);padding:var(--sp-5);background:var(--aae-white)}
+.aae-cap__icon{color:var(--aae-navy)}
+.aae-cap__t{font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-h4);color:var(--aae-navy)}
+.aae-cap__d{margin-top:4px;font-size:var(--fs-body-sm);color:var(--text-secondary);text-wrap:pretty}
+.aae-cap__meta{margin-top:var(--sp-2);font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--text-muted)}
+
+/* ---------- CTA band ---------- */
+.aae-ctaband{background:var(--surface-inverse);color:var(--aae-white)}
+.aae-ctaband__inner{display:flex;flex-direction:column;gap:var(--sp-5);max-width:var(--content-max);margin-inline:auto;padding:clamp(48px,6vw,72px) var(--gutter)}
+@media (min-width:1024px){.aae-ctaband__inner{flex-direction:row;align-items:center;justify-content:space-between;gap:var(--sp-9)}}
+.aae-ctaband h2{font-size:var(--fs-h2);color:var(--aae-white);max-width:24ch;text-wrap:balance}
+.aae-ctaband p{margin-top:var(--sp-3);color:var(--text-on-dark-secondary);max-width:52ch;text-wrap:pretty}
+.aae-ctaband__actions{display:flex;flex-wrap:wrap;gap:var(--sp-3);flex:none}
+
+/* ---------- Forms ---------- */
+.aae-form{display:grid;gap:var(--sp-5)}
+.aae-form__grid{display:grid;gap:var(--sp-5);grid-template-columns:1fr}
+@media (min-width:768px){.aae-form__grid{grid-template-columns:repeat(2,1fr)}.aae-field--full{grid-column:1/-1}}
+.aae-field{display:flex;flex-direction:column;gap:var(--sp-2)}
+.aae-field__label{font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-caption);letter-spacing:.04em;text-transform:uppercase;color:var(--aae-navy)}
+.aae-field__label span{color:var(--rule-accent)}
+.aae-field__hint{font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--text-muted)}
+.aae-input,.aae-select,.aae-textarea{width:100%;min-height:var(--tap-min);padding:11px var(--sp-3);background:var(--aae-white);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:var(--radius);font-family:var(--font-body);font-size:var(--fs-body);transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.aae-textarea{min-height:132px;resize:vertical;line-height:var(--lh-body)}
+.aae-select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--aae-navy) 50%),linear-gradient(135deg,var(--aae-navy) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:var(--sp-8)}
+.aae-input:hover,.aae-select:hover,.aae-textarea:hover{border-color:var(--aae-grey-400)}
+.aae-input:focus,.aae-select:focus,.aae-textarea:focus{outline:none;border-color:var(--aae-navy);box-shadow:var(--shadow-focus)}
+.aae-input::placeholder,.aae-textarea::placeholder{color:var(--text-muted)}
+.aae-file{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-3);padding:var(--sp-4);border:1px dashed var(--border-strong);border-radius:var(--radius);background:var(--surface-subtle)}
+.aae-file__name{font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--text-secondary)}
+.aae-form__footnote{font-size:var(--fs-caption);color:var(--text-muted);max-width:60ch}
+.aae-form__ok{padding:var(--sp-5);border:1px solid var(--aae-navy);border-left:3px solid var(--rule-accent);border-radius:var(--radius);background:var(--surface-tint)}
+.aae-form__ok b{display:block;font-family:var(--font-display);color:var(--aae-navy);font-size:var(--fs-h4)}
+.aae-form__ok p{margin-top:var(--sp-2);font-size:var(--fs-body-sm);color:var(--text-secondary)}
+
+/* ---------- Footer ---------- */
+.aae-footer{background:var(--surface-inverse-deep);color:var(--text-on-dark-secondary);font-size:var(--fs-body-sm)}
+.aae-footer__inner{max-width:var(--content-max);margin-inline:auto;padding:var(--sp-10) var(--gutter) var(--sp-6)}
+.aae-footer__top{display:grid;gap:var(--sp-8);grid-template-columns:1fr}
+@media (min-width:768px){.aae-footer__top{grid-template-columns:1.4fr 1fr 1fr}}
+@media (min-width:1024px){.aae-footer__top{grid-template-columns:1.6fr 1fr 1fr 1fr}}
+.aae-footer__brand{display:flex;gap:var(--sp-4);align-items:flex-start}
+.aae-footer__brand img{width:76px;height:76px;filter:brightness(0) invert(1)}
+.aae-footer__brand b{display:block;font-family:var(--font-display);font-weight:var(--fw-bold);font-size:var(--fs-h4);color:var(--aae-white);text-transform:uppercase;letter-spacing:-.01em}
+.aae-footer__brand p{margin-top:var(--sp-2);max-width:34ch;text-wrap:pretty}
+.aae-footer__col h3{font-family:var(--font-mono);font-size:var(--fs-eyebrow);font-weight:var(--fw-regular);letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--aae-white);opacity:.7}
+.aae-footer__col ul{display:flex;flex-direction:column;gap:0;margin:var(--sp-3) 0 0;padding:0;list-style:none}
+.aae-footer__col a{display:inline-flex;min-height:var(--tap-min);align-items:center;border:0;color:var(--text-on-dark-secondary);text-decoration:none}
+@media (min-width:1024px){.aae-footer__col ul{gap:var(--sp-3);margin-top:var(--sp-4)}.aae-footer__col a{min-height:24px}}
+.aae-footer__col a:hover{color:var(--aae-white)}
+.aae-footer__bottom{display:flex;flex-wrap:wrap;gap:var(--sp-3) var(--sp-5);justify-content:space-between;margin-top:var(--sp-8);padding-top:var(--sp-5);border-top:1px solid var(--border-inverse);font-family:var(--font-mono);font-size:var(--fs-caption);color:#9C9AB8}
+
+/* ---------- WhatsApp button ---------- */
+.aae-whatsapp{position:fixed;right:16px;bottom:16px;z-index:50;display:inline-flex;align-items:center;gap:var(--sp-2);min-height:52px;padding:0 var(--sp-5);background:var(--aae-navy);color:var(--aae-white);border:0;border-radius:var(--radius);box-shadow:var(--shadow-raised);font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-body-sm);text-decoration:none}
+.aae-whatsapp:hover{background:var(--aae-navy-hover);color:var(--aae-white)}
+@media (min-width:1024px){.aae-whatsapp{right:24px;bottom:24px}}
+body.is-locked .aae-whatsapp{opacity:0;pointer-events:none;transition:opacity var(--dur) var(--ease)}
+
+/* ---------- Image placeholder slot ---------- */
+.aae-slot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--sp-2);padding:var(--sp-5);background:var(--surface-tint);border:1px dashed var(--border-strong);border-radius:var(--radius);text-align:center;color:var(--text-muted)}
+.aae-slot__label{font-family:var(--font-mono);font-size:var(--fs-caption);letter-spacing:.08em;text-transform:uppercase;color:var(--aae-navy)}
+.aae-slot__note{font-family:var(--font-mono);font-size:11px;max-width:34ch;line-height:1.5}
+.aae-servicecard__media .aae-slot{height:100%;border:0;border-radius:0}
+.aae-hero__slot{position:absolute;right:var(--gutter);top:var(--sp-4);z-index:1}
+.aae-hero__slot span{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);border:1px dashed rgba(255,255,255,.32);border-radius:var(--radius);padding:6px 10px}
+
+/* ---------- Hire card (visually distinct from service cards) ---------- */
+.aae-hirecard{display:grid;gap:0;background:var(--surface-inverse);color:var(--text-on-dark);border-radius:var(--radius);overflow:hidden;grid-template-columns:1fr}
+@media (min-width:900px){.aae-hirecard{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}}
+.aae-hirecard__body{display:flex;flex-direction:column;gap:var(--sp-4);align-items:flex-start;padding:clamp(24px,4vw,48px)}
+.aae-hirecard h3{font-size:var(--fs-h2);color:var(--aae-white);max-width:20ch}
+.aae-hirecard p{color:var(--text-on-dark-secondary);max-width:56ch;text-wrap:pretty}
+.aae-hirecard__specs{display:grid;gap:0;border-left:1px solid var(--border-inverse)}
+.aae-hirecard__spec{display:flex;flex-direction:column;gap:2px;padding:var(--sp-5) clamp(24px,4vw,40px);border-bottom:1px solid var(--border-inverse)}
+.aae-hirecard__spec:last-child{border-bottom:0}
+.aae-hirecard__spec b{font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-h4);color:var(--aae-white)}
+.aae-hirecard__spec span{font-family:var(--font-mono);font-size:var(--fs-spec);color:var(--text-on-dark-secondary);font-variant-numeric:tabular-nums}
+@media (max-width:899px){.aae-hirecard__specs{border-left:0;border-top:1px solid var(--border-inverse)}}
+
+/* ---------- Highlighted callout block ---------- */
+.aae-callout{border:1px solid var(--border-default);border-top:3px solid var(--rule-accent);border-radius:var(--radius);background:var(--surface-tint);padding:clamp(20px,3vw,32px)}
+.aae-callout h3{font-size:var(--fs-h3);max-width:28ch}
+.aae-callout p{margin-top:var(--sp-3);color:var(--text-secondary);max-width:var(--measure);text-wrap:pretty}
+
+/* ---------- Sub-capability block (service pages) ---------- */
+.aae-subcap{border-top:1px solid var(--border-default);padding-top:var(--sp-5)}
+.aae-subcap__n{font-family:var(--font-mono);font-size:var(--fs-eyebrow);letter-spacing:var(--ls-eyebrow);color:var(--rule-accent)}
+.aae-subcap h3{margin-top:var(--sp-2);font-size:var(--fs-h3)}
+.aae-subcap p{margin-top:var(--sp-3);color:var(--text-secondary);max-width:var(--measure);text-wrap:pretty}
+
+/* ---------- Nav: every desktop label stays on one line, aligned to the content grid ---------- */
+/* The seven-item bar needs 1095px; below 1240px viewport the drawer is used instead. */
+@media (min-width:1240px){.aae-nav__links{gap:20px}.aae-nav__link{font-size:14px}.aae-nav__actions{margin-left:var(--sp-4)}}
+@media (min-width:1400px){.aae-nav__links{gap:var(--sp-5)}.aae-nav__link{font-size:15px}}
+
+/* ---------- Breadcrumbs ---------- */
+.aae-crumbs{background:var(--surface-subtle);border-bottom:1px solid var(--border-default)}
+.aae-crumbs__inner{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-2);max-width:var(--content-max);margin-inline:auto;padding:var(--sp-3) var(--gutter);font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--text-muted)}
+.aae-crumbs a{border:0;color:var(--text-secondary);text-decoration:none}
+.aae-crumbs a:hover{color:var(--text-link)}
+.aae-crumbs__sep{color:var(--border-strong)}
+.aae-crumbs [aria-current="page"]{color:var(--aae-navy)}
+
+/* ---------- 404 ---------- */
+.aae-404{display:flex;flex-direction:column;justify-content:center;min-height:60vh;max-width:var(--content-max);margin-inline:auto;padding:var(--section-y) var(--gutter)}
+.aae-404__code{font-family:var(--font-mono);font-size:var(--fs-eyebrow);letter-spacing:var(--ls-eyebrow);color:var(--rule-accent)}
+.aae-404 h1{margin-top:var(--sp-4);font-size:var(--fs-h1);max-width:22ch}
+.aae-404 p{margin-top:var(--sp-4);max-width:56ch;color:var(--text-secondary);font-size:var(--fs-lead)}
+.aae-404__links{display:flex;flex-wrap:wrap;gap:var(--sp-3);margin-top:var(--sp-7)}
+
+/* ===== site build additions ===== */
+[hidden]{display:none!important}
+.aae-grid{display:grid;gap:var(--sp-5);grid-template-columns:minmax(0,1fr)}
+.aae-grid>*{min-width:0}
+@media (min-width:700px){.aae-grid--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:980px){.aae-grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.aae-split{display:grid;gap:var(--sp-9);grid-template-columns:minmax(0,1fr)}
+.aae-split>*{min-width:0}
+@media (min-width:980px){.aae-split{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}}
+.aae-prose{display:grid;gap:var(--sp-4);max-width:var(--measure);color:var(--text-secondary)}
+.aae-figure{margin:0}
+.aae-figure img{width:100%;object-fit:cover;border-radius:var(--radius)}
+.aae-figure figcaption{margin-top:var(--sp-2);font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--text-muted)}
+.aae-scopelist{margin:var(--sp-6) 0 0;padding:0;list-style:none;display:grid;gap:var(--sp-3)}
+.aae-scopelist li{display:flex;gap:var(--sp-3);align-items:baseline;border-top:1px solid var(--border-default);padding-top:var(--sp-3)}
+.aae-scopelist li::before{content:"—";font-family:var(--font-mono);color:var(--rule-accent)}
+.aae-tags{display:flex;flex-wrap:wrap;gap:var(--sp-2)}
+.aae-icon svg,svg.lucide{display:block}
+.aae-btn svg,.aae-nav__phone svg,.aae-whatsapp svg,.aae-drawer__link svg,.aae-drawer__close svg,.aae-nav__toggle svg,.aae-servicecard__link svg,.aae-seqcard__go svg,.aae-hero__badge svg{width:1em;height:1em;flex:none}
+.aae-cap__icon svg{width:22px;height:22px}
+.aae-skip{position:absolute;left:-9999px;top:0;z-index:300;background:var(--aae-navy);color:#fff;padding:12px 16px;border-radius:var(--radius)}
+.aae-skip:focus{left:var(--sp-4);top:var(--sp-2)}
+body.is-locked{position:fixed;left:0;right:0;width:100%;overflow:hidden}
+.aae-section p a,.aae-form__footnote a{padding-block:6px}
+.aae-section--navy a{color:#F0B183}
+.aae-section--navy a:hover{color:var(--aae-white)}
+
+/* ---- narrow-viewport hardening (verified at 360px) ---- */
+.aae-seq,.aae-equip{grid-template-columns:minmax(0,1fr)}
+.aae-seq>*,.aae-equip>*{min-width:0}
+@media (min-width:760px){.aae-seq{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1100px){.aae-seq{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:720px){.aae-equip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.aae-statbar__grid{grid-template-columns:minmax(0,1fr)}
+@media (min-width:768px){.aae-statbar__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* a spec table is the widest thing on a service page: let it scroll, not the page */
+.aae-spectable__wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.aae-footer__brand>div{min-width:0}
+.aae-footer__top,.aae-form__grid{min-width:0}
+/* long tokens (email addresses, reference numbers) must not push the layout */
+body,.aae-spec,.aae-footer p,.aae-cap__d{overflow-wrap:break-word}
+/* the homepage hero is the pitch, but it should not run to two screens on a phone */
+@media (max-width:559px){
+ .aae-hero--major{min-height:auto}
+ .aae-hero--major .aae-hero__inner{padding-block:48px 40px}
+ .aae-hero__meta{gap:var(--sp-4) var(--sp-5);margin-top:var(--sp-6);padding-top:var(--sp-4)}
+ .aae-hero__metaitem{flex:1 1 40%}
+ .aae-hero__metaitem b{font-size:19px}
+ .aae-hero__badge{margin-bottom:var(--sp-4)}
+}</style>
 </head><body>
-<a class="aae-skip" href="#main">Skip to content</a><header class="aae-nav">
-<div class="aae-nav__bar">
+<a class="aae-skip" href="#main">Skip to content</a><header class="aae-nav"><div class="aae-nav__bar">
 <a class="aae-nav__brand" href="index.html" aria-label="Al-Ashfaq Enterprises — home">
 <img src="assets/logo.png" alt="Al-Ashfaq Enterprises ship's wheel logo" width="52" height="52">
 <span class="aae-nav__brandtext"><b>Al-Ashfaq Enterprises</b><span>Industrial services · Karachi</span></span></a>
@@ -17,58 +620,49 @@
 </nav>
 <div class="aae-nav__actions">
 <a class="aae-nav__phone" href="tel:03462944433"><i data-lucide="phone"></i>0346 294 4433</a>
-<a class="aae-btn aae-btn--primary aae-btn--sm" href="rfq.html"><span>Request a quotation</span></a>
-</div>
+<a class="aae-btn aae-btn--primary aae-btn--sm" href="rfq.html"><span>Request a quotation</span></a></div>
 <button class="aae-nav__toggle" data-drawer-open aria-expanded="false" aria-label="Open menu"><i data-lucide="menu"></i>Menu</button>
-</div>
-</header><main id="main"><div class="aae-crumbs"><nav class="aae-crumbs__inner" aria-label="Breadcrumb">
+</div></header><main id="main"><div class="aae-crumbs"><nav class="aae-crumbs__inner" aria-label="Breadcrumb">
 <a href="index.html">Home</a><span class="aae-crumbs__sep" aria-hidden="true">/</span><span aria-current="page">About</span>
 </nav></div><section class="aae-hero aae-hero--compact">
-<div class="aae-hero__media"><img src="assets/img/about-hero-01.webp" alt="Propeller and hull of a vessel in dry dock" class="is-active" loading="eager"></div>
+<div class="aae-hero__media"><img src="assets/img/yard-collage-01.jpeg" alt="Shipyard work in progress: grinding, welding and hull coating" class="is-active" loading="eager"></div>
 <div class="aae-hero__scrim"></div>
-
 <div class="aae-hero__inner">
+
 <div class="aae-eyebrow aae-hero__eyebrow">About</div>
 <h1>28 years on the same waterfront</h1>
 <p class="aae-hero__sub">Al-Ashfaq Enterprises has been operating from West Wharf Road, Karachi since 1998, on ship repair and shipbuilding projects for Karachi Shipyard &amp; Engineering Works and the Pakistan Navy Dockyard.</p>
 <div class="aae-hero__ctas"><a class="aae-btn aae-btn--primary aae-btn--lg" href="rfq.html"><span>Request a quotation</span><i data-lucide="arrow-right"></i></a></div>
+
 </div></section><section class="aae-statbar" aria-label="Company credentials"><div class="aae-statbar__grid">
-<div class="aae-stat"><div class="aae-stat__figure"><span data-count="1998">1998</span></div><div class="aae-stat__label">Established — 28 years on the same waterfront</div></div><div class="aae-stat"><div class="aae-stat__figure"><span data-count="300+">300+</span></div><div class="aae-stat__label">Projects delivered for KSEW and the Naval Dockyard</div></div><div class="aae-stat"><div class="aae-stat__figure"><span data-count="66">66</span></div><div class="aae-stat__label">Directly employed tradesmen across five trades</div></div><div class="aae-stat"><div class="aae-stat__figure"><span data-count="5 min">5 min</span></div><div class="aae-stat__label">From our West Wharf Road office to the yard gate</div></div>
-</div></section><section class="aae-section"><div class="aae-container aae-split">
+<div class="aae-stat"><div class="aae-stat__figure"><span data-count="1998">1998</span></div><div class="aae-stat__label">Established — 28 years on the same waterfront</div></div><div class="aae-stat"><div class="aae-stat__figure"><span data-count="300+">300+</span></div><div class="aae-stat__label">Projects delivered for KSEW and the Naval Dockyard</div></div><div class="aae-stat"><div class="aae-stat__figure"><span data-count="66">66</span></div><div class="aae-stat__label">Directly employed tradesmen across five trades</div></div><div class="aae-stat"><div class="aae-stat__figure"><span data-count="5 min">5 min</span></div><div class="aae-stat__label">From our West Wharf Road office to the yard gate</div></div></div></section><section class="aae-section"><div class="aae-container aae-split">
 <div><div class="aae-sectionhead"><div class="aae-eyebrow">Who we are</div><div class="aae-sectionhead__rule"></div><h2>A contractor, not a labour supplier</h2></div>
 <div class="aae-prose" style="margin-top:var(--sp-5)">
 <p>For 28 years we have worked on ship repair and shipbuilding projects for Karachi Shipyard &amp; Engineering Works and the Pakistan Navy Dockyard, across multiple departments at both facilities. We have delivered over 300 projects in that time.</p>
-<p>We work with a directly employed workforce of 66 tradesmen and our own plant and equipment. We do not sublet our core trades, and we do not hire in crews per job. The same insulators, welders, blasters, painters and scaffolders return to site project after project — which is why the yards keep calling us back.</p>
-<p>Our office is on West Wharf Road, minutes from Karachi Shipyard and the Naval Dockyard. We can survey a site and mobilise the same day a scope is issued.</p></div>
+<p>We take the docking from first surface preparation to final coat: grit blasting of underwater hull and decks, tank and bilge cleaning, de-rusting and painting, access scaffolding, steel renewal and fabrication, and then stud welding, insulation, exhaust cladding, cable tray and deck anti-skid work as the job closes out.</p>
+<p>We work with a directly employed workforce of 66 tradesmen and our own plant. We do not sublet our core trades, and we do not hire in crews per job. The same blasters, painters, scaffolders, welders and insulators return to site project after project — which is why the yards keep calling us back.</p></div>
 <div class="aae-tags" style="margin-top:var(--sp-6)"><span class="aae-tag">Established 1998</span><span class="aae-tag">300+ projects</span><span class="aae-tag">66 personnel</span><span class="aae-tag">Own plant</span></div></div>
-<div><figure class="aae-figure"><img src="assets/img/home-atmos-01.webp" alt="Dry dock interior during hull work" style="aspect-ratio:4/3" loading="lazy"><figcaption>Dry dock interior during hull work</figcaption></figure>
+<div><figure class="aae-figure"><img src="assets/img/yard-drydock-01.jpeg" alt="Vessel in dry dock during a scheduled repair period" style="aspect-ratio:4/3" loading="lazy"><figcaption>Vessel in dry dock during a repair period</figcaption></figure>
 <div class="aae-projectcard" style="margin-top:var(--sp-5)">
 <div class="aae-projectcard__row"><div class="aae-projectcard__k">Office</div><div class="aae-projectcard__v">2nd Floor, Sattar Chamber, West Wharf Road, Karachi</div></div>
 <div class="aae-projectcard__row"><div class="aae-projectcard__k">Clients</div><div class="aae-projectcard__v">KSEW · Pakistan Navy Dockyard</div></div>
-<div class="aae-projectcard__row"><div class="aae-projectcard__k">Since</div><div class="aae-projectcard__v aae-projectcard__year">1998</div></div>
-</div></div></div></section><section class="aae-section aae-section--tint"><div class="aae-container">
+<div class="aae-projectcard__row"><div class="aae-projectcard__k">Since</div><div class="aae-projectcard__v aae-projectcard__year">1998</div></div></div></div></div></section><section class="aae-section aae-section--tint"><div class="aae-container">
 <div class="aae-sectionhead"><div class="aae-eyebrow">Workforce</div><div class="aae-sectionhead__rule"></div><h2>Directly employed, insured, and returning to the same yards</h2><p>Every Al-Ashfaq Enterprises employee is covered under a group life insurance policy with Jubilee Life Insurance. Our tradesmen are directly employed, not casual labour engaged per project.</p></div>
 <div style="margin-top:var(--sp-8)"><ul class="aae-caplist aae-caplist--3">
-<li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="layers"></i></span><div><div class="aae-cap__t">Insulators</div><div class="aae-cap__d">Pipework, valves, exhaust and engine-room lagging.</div><div class="aae-cap__meta">20 personnel</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="flame"></i></span><div><div class="aae-cap__t">Welders</div><div class="aae-cap__d">Structural, plate and on-board repair welding.</div><div class="aae-cap__meta">15 personnel</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="grid-2x2"></i></span><div><div class="aae-cap__t">Scaffolders</div><div class="aae-cap__d">Hull, tank and machinery-space access.</div><div class="aae-cap__meta">15 personnel</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="spray-can"></i></span><div><div class="aae-cap__t">Painters</div><div class="aae-cap__d">Airless spray and brush application.</div><div class="aae-cap__meta">8 personnel</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="gauge"></i></span><div><div class="aae-cap__t">Blasters</div><div class="aae-cap__d">Abrasive blasting and manual de-rusting.</div><div class="aae-cap__meta">8 personnel</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="shield-check"></i></span><div><div class="aae-cap__t">All employees insured</div><div class="aae-cap__d">Group life cover, directly employed — not casual labour.</div><div class="aae-cap__meta">Jubilee Life Insurance</div></div></li>
-</ul></div></div></section><section class="aae-section"><div class="aae-container"><div class="aae-sectionhead"><div class="aae-eyebrow">How we work</div><div class="aae-sectionhead__rule"></div><h2>From scope to signed handover</h2></div><div style="margin-top:var(--sp-8)"><ol class="aae-process" style="list-style:none;margin:0;padding:0">
-<li class="aae-step"><div class="aae-step__n">Step 01</div><h4>Site survey</h4><p>We attend the yard, measure the scope and confirm access and permit requirements.</p><p class="aae-spec" style="color:var(--text-muted);margin-top:var(--sp-3)">Same working day, West Wharf</p></li><li class="aae-step"><div class="aae-step__n">Step 02</div><h4>Method & quotation</h4><p>Written method statement with the standards referenced, priced by area or linear metre.</p></li><li class="aae-step"><div class="aae-step__n">Step 03</div><h4>Mobilisation</h4><p>Our own crews and plant on site — compressors, blast pots, spray units and welding sets.</p></li><li class="aae-step"><div class="aae-step__n">Step 04</div><h4>Inspection & handover</h4><p>Readings recorded per coat and signed off with the yard inspector before handover.</p></li>
-</ol></div></div></section><section class="aae-ctaband"><div class="aae-ctaband__inner">
+<li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="gauge"></i></span><div><div class="aae-cap__t">Blasters</div><div class="aae-cap__d">Abrasive blasting of hull, deck and tank internals.</div><div class="aae-cap__meta">8 personnel</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="paintbrush"></i></span><div><div class="aae-cap__t">Painters</div><div class="aae-cap__d">Airless spray, brush and roller application.</div><div class="aae-cap__meta">8 personnel</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="grid-2x2"></i></span><div><div class="aae-cap__t">Scaffolders</div><div class="aae-cap__d">Hull, tank and machinery-space access.</div><div class="aae-cap__meta">15 personnel</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="flame"></i></span><div><div class="aae-cap__t">Welders</div><div class="aae-cap__d">Steel renewal, structural, plate and repair welding.</div><div class="aae-cap__meta">15 personnel</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="layers"></i></span><div><div class="aae-cap__t">Insulators</div><div class="aae-cap__d">Stud welding, insulation, exhaust lagging and cladding.</div><div class="aae-cap__meta">20 personnel</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="shield-check"></i></span><div><div class="aae-cap__t">All employees insured</div><div class="aae-cap__d">Group life cover, directly employed — not casual labour.</div><div class="aae-cap__meta">Jubilee Life Insurance</div></div></li></ul></div></div></section><section class="aae-section"><div class="aae-container"><div class="aae-sectionhead"><div class="aae-eyebrow">How we work</div><div class="aae-sectionhead__rule"></div><h2>From scope to signed handover</h2></div><div style="margin-top:var(--sp-8)"><ol class="aae-process" style="list-style:none;margin:0;padding:0">
+<li class="aae-step"><div class="aae-step__n">Step 01</div><h4>Site survey</h4><p>We attend the yard, measure the scope and confirm access and permit requirements.</p><p class="aae-spec" style="color:var(--text-muted);margin-top:var(--sp-3)">Same working day, West Wharf</p></li><li class="aae-step"><div class="aae-step__n">Step 02</div><h4>Method & quotation</h4><p>Written method statement with the standards referenced, priced by area or linear metre.</p></li><li class="aae-step"><div class="aae-step__n">Step 03</div><h4>Mobilisation</h4><p>Our own crews and plant on site — compressors, blast pots, spray units and welding sets.</p></li><li class="aae-step"><div class="aae-step__n">Step 04</div><h4>Inspection & handover</h4><p>Readings recorded per coat and signed off with the yard inspector before handover.</p></li></ol></div></div></section><section class="aae-ctaband"><div class="aae-ctaband__inner">
 <div><h2>Send us a scope. We will quote it.</h2><p>Drawings, a tender document or a short description of the work is enough to start. Our office is on West Wharf Road, minutes from Karachi Shipyard and the Naval Dockyard.</p></div>
 <div class="aae-ctaband__actions">
 <a class="aae-btn aae-btn--primary aae-btn--lg" href="rfq.html"><span>Request a quotation</span><i data-lucide="arrow-right"></i></a>
-<a class="aae-btn aae-btn--outline-inverse aae-btn--lg" href="tel:03462944433"><i data-lucide="phone"></i><span>0346 294 4433</span></a>
-</div></div></section></main><footer class="aae-footer"><div class="aae-footer__inner">
-<div class="aae-footer__top">
+<a class="aae-btn aae-btn--outline-inverse aae-btn--lg" href="tel:03462944433"><i data-lucide="phone"></i><span>0346 294 4433</span></a></div></div></section></main><footer class="aae-footer"><div class="aae-footer__inner"><div class="aae-footer__top">
 <div class="aae-footer__brand"><img src="assets/logo.png" alt="Al-Ashfaq Enterprises ship's wheel logo" width="76" height="76">
 <div><b>Al-Ashfaq Enterprises</b>
-<p>Insulation, de-rusting and protective coating, deck covering, steel renewal, cable tray installation and scaffolding access for marine, defence and heavy industry. Operating from West Wharf Road, Karachi since 1998.</p>
+<p>Grit blasting, tank cleaning, de-rusting and painting, scaffolding access, steel renewal, stud welding and insulation, exhaust cladding, cable tray fitting and deck anti-skid coating for marine, defence and heavy industry. Operating from West Wharf Road, Karachi since 1998.</p>
 <p class="aae-spec" style="margin-top:var(--sp-4);color:#C7C6DA"><span style="display:block">2nd Floor, Sattar Chamber</span><span style="display:block">West Wharf Road, Karachi, Pakistan</span><span style="display:block;margin-top:8px">0346 294 4433</span><span style="display:block">alashfaqenterprises94@gmail.com</span></p></div></div>
-<div class="aae-footer__col"><h3>Services</h3><ul><li><a href="services/surface-protection.html">Surface protection</a></li><li><a href="services/insulation.html">Insulation &amp; cladding</a></li><li><a href="services/deck-covering.html">Deck covering &amp; coating</a></li><li><a href="services/fabrication.html">Steel renewal &amp; fabrication</a></li><li><a href="services/cable-tray.html">Cable tray installation</a></li><li><a href="services/scaffolding.html">Scaffolding, access &amp; sheeting</a></li></ul></div>
-<div class="aae-footer__col"><h3>Company</h3><ul><li><a href="equipment-hire.html">Equipment hire</a></li><li><a href="about.html">About</a></li><li><a href="capability.html">Capability &amp; plant</a></li><li><a href="projects.html">Project references</a></li><li><a href="hse.html">HSE &amp; welfare</a></li></ul></div>
-<div class="aae-footer__col"><h3>Procurement</h3><ul><li><a href="rfq.html">Request a quotation</a></li><li><a href="contact.html">Contact</a></li><li><a href="tel:03462944433">0346 294 4433</a></li></ul></div>
-</div>
-<div class="aae-footer__bottom"><span>© 2026 Al-Ashfaq Enterprises. Established 1998.</span><span>NTN / registration details on request</span></div>
-</div></footer><div class="aae-nav__backdrop" data-backdrop hidden></div>
+<div class="aae-footer__col"><h3>Services</h3><ul><li><a href="services/grit-blasting.html">Grit blasting &amp; abrasive blasting</a></li><li><a href="services/tank-cleaning.html">Bilges &amp; tank cleaning and painting</a></li><li><a href="services/de-rusting.html">De-rusting &amp; painting</a></li><li><a href="services/scaffolding.html">Erection &amp; dismantling of scaffolding</a></li><li><a href="services/steel-renewal.html">Steel renewal &amp; fabrication</a></li><li><a href="services/stud-welding.html">Stud welding &amp; insulation</a></li><li><a href="services/exhaust-cladding.html">Insulation cladding on exhaust</a></li><li><a href="services/cable-tray.html">Cable tray fitting</a></li><li><a href="services/deck-covering.html">Deck covering &amp; anti-skid coating</a></li></ul></div>
+<div class="aae-footer__col"><h3>Company</h3><ul><li><a href="about.html">About</a></li><li><a href="capability.html">Capability &amp; plant</a></li><li><a href="equipment-hire.html">Equipment hire</a></li><li><a href="projects.html">Project references</a></li><li><a href="hse.html">HSE &amp; welfare</a></li></ul></div>
+<div class="aae-footer__col"><h3>Procurement</h3><ul><li><a href="rfq.html">Request a quotation</a></li><li><a href="contact.html">Contact</a></li><li><a href="tel:03462944433">0346 294 4433</a></li></ul></div></div>
+<div class="aae-footer__bottom"><span>© 2026 Al-Ashfaq Enterprises. Established 1998.</span><span>NTN / registration details on request</span></div></div></footer><div class="aae-nav__backdrop" data-backdrop hidden></div>
 <div class="aae-drawer" data-drawer hidden role="dialog" aria-modal="true" aria-label="Site menu">
 <div class="aae-drawer__top"><span class="aae-eyebrow">Menu</span>
 <button class="aae-drawer__close" data-drawer-close aria-label="Close menu"><i data-lucide="x"></i>Close</button></div>
@@ -78,7 +672,176 @@
 <div class="aae-drawer__foot">
 <a class="aae-btn aae-btn--primary aae-btn--block" href="rfq.html"><span>Request a quotation</span></a>
 <a class="aae-btn aae-btn--outline aae-btn--block" href="tel:03462944433"><i data-lucide="phone"></i><span>0346 294 4433</span></a>
-</div></div><a class="aae-whatsapp" href="https://wa.me/923462944433?text=Enquiry%20from%20the%20Al-Ashfaq%20Enterprises%20website%20-%20" target="_blank" rel="noopener" aria-label="Contact Al-Ashfaq Enterprises on WhatsApp at 0346 294 4433"><i data-lucide="message-circle"></i>WhatsApp</a>
+</div></div>
+<a class="aae-whatsapp" href="https://wa.me/923462944433?text=Enquiry%20from%20the%20Al-Ashfaq%20Enterprises%20website%20-%20" target="_blank" rel="noopener" aria-label="Contact Al-Ashfaq Enterprises on WhatsApp at 0346 294 4433"><i data-lucide="message-circle"></i>WhatsApp</a>
 <script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"></script>
-<script src="app.js?v=3"></script>
+<script>/* Al-Ashfaq Enterprises — site behaviour. No framework.
+   1. mobile drawer (backdrop, Escape, focus trap, scroll lock)
+   2. hero photograph cross-fade
+   3. scroll reveal
+   4. stat count-up
+   5. RFQ form: file name display + local confirmation
+   All motion stops under prefers-reduced-motion. */
+(() => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- 1. drawer ----------------------------------------------------------
+     The drawer and backdrop are direct children of <body>, NOT of the sticky
+     <header>: a sticky element with a z-index creates a stacking context, which
+     would trap the drawer behind page content however high its own z-index.
+     An inline fallback in the page <head> may already have wired this up (in
+     case app.js failed to load); the shared __aaeDrawerInit flag prevents a
+     double bind. */
+  const drawerAlreadyWired = window.__aaeDrawerInit;
+  if (!drawerAlreadyWired) window.__aaeDrawerInit = true;
+  const drawer = document.querySelector('[data-drawer]');
+  const backdrop = document.querySelector('[data-backdrop]');
+  const openBtn = document.querySelector('[data-drawer-open]');
+  const closeBtn = document.querySelector('[data-drawer-close]');
+  let scrollY = 0;
+  let isOpen = false;
+
+  const lock = () => {
+    scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    document.body.style.top = -scrollY + 'px';
+    document.body.classList.add('is-locked');
+  };
+  const unlock = () => {
+    document.body.classList.remove('is-locked');
+    document.body.style.top = '';
+    window.scrollTo(0, scrollY);
+  };
+
+  const setDrawer = (on) => {
+    if (!drawer || on === isOpen) return;
+    isOpen = on;
+    // Visibility is the [hidden] attribute and nothing else — no class, no timer,
+    // no transition to wait on. If the CSS animation never runs, the drawer is
+    // still on screen.
+    drawer.hidden = !on;
+    if (backdrop) backdrop.hidden = !on;
+    if (openBtn) openBtn.setAttribute('aria-expanded', String(on));
+    if (on) {
+      lock();
+      if (closeBtn) closeBtn.focus();
+    } else {
+      unlock();
+      if (openBtn && openBtn.offsetParent) openBtn.focus();
+    }
+  };
+
+  // Bind unless an inline fallback already did (shared __aaeDrawerInit flag).
+  if (!drawerAlreadyWired) {
+    if (openBtn) openBtn.addEventListener('click', () => setDrawer(true));
+    if (closeBtn) closeBtn.addEventListener('click', () => setDrawer(false));
+    if (backdrop) backdrop.addEventListener('click', () => setDrawer(false));
+    // a tap on a drawer link should close it before the page changes
+    if (drawer) {
+      drawer.querySelectorAll('a[href]').forEach((a) => {
+        a.addEventListener('click', () => setDrawer(false));
+      });
+    }
+    document.addEventListener('keydown', (e) => {
+      if (!isOpen) return;
+      if (e.key === 'Escape') { setDrawer(false); return; }
+      if (e.key !== 'Tab' || !drawer) return;
+      const f = [...drawer.querySelectorAll('a[href],button:not([disabled])')]
+        .filter((el) => el.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+    // close if the viewport grows into the desktop nav while the drawer is open
+    window.matchMedia('(min-width: 1240px)').addEventListener('change', (e) => {
+      if (e.matches) setDrawer(false);
+    });
+  }
+
+  /* ---- 2. hero cross-fade ---- */
+  const media = document.querySelector('[data-hero-rotate]');
+  if (media && !reduced) {
+    const slides = [...media.querySelectorAll('img')];
+    if (slides.length > 1) {
+      let i = 0;
+      setInterval(() => {
+        slides[i].classList.remove('is-active');
+        slides[i].setAttribute('aria-hidden', 'true');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('is-active');
+        slides[i].removeAttribute('aria-hidden');
+      }, 6000);
+    }
+  }
+
+  /* ---- 3. scroll reveal ---- */
+  if (!reduced) {
+    const targets = new Set(document.querySelectorAll('[data-reveal]'));
+    document.querySelectorAll('.aae-section > .aae-container > *').forEach((el) => targets.add(el));
+    targets.forEach((el) => el.classList.add('aae-reveal'));
+    const check = () => {
+      const h = window.innerHeight || 800;
+      document.querySelectorAll('.aae-reveal:not(.is-visible)').forEach((el) => {
+        if (el.getBoundingClientRect().top < h * 0.92) el.classList.add('is-visible');
+      });
+    };
+    check();
+    document.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check, { passive: true });
+    window.addEventListener('load', check);
+  }
+
+  /* ---- 4. stat count-up ----
+     Years are never animated: counting 0 → 1998 shows "1986" mid-flight, which
+     reads as a wrong founding date. Only quantities count up. */
+  document.querySelectorAll('[data-count]').forEach((el) => {
+    const raw = el.getAttribute('data-count');
+    const isYear = /^(19|20)\d{2}$/.test(raw.trim());
+    const m = /^(\D*)(\d[\d,]*)(.*)$/.exec(raw);
+    if (!m || reduced || isYear) { el.textContent = raw; return; }
+    const target = Number(m[2].replace(/,/g, ''));
+    const grouped = m[2].includes(',');
+    const fmt = (v) => (grouped ? v.toLocaleString('en-US') : String(v));
+    let started = false;
+    const start = () => {
+      if (started) return;
+      started = true;
+      const t0 = performance.now(), dur = 1100;
+      const step = (t) => {
+        const p = Math.min(1, (t - t0) / dur);
+        const v = Math.round(target * (1 - Math.pow(1 - p, 3)));
+        el.textContent = m[1] + fmt(v) + m[3];
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { start(); io.disconnect(); } }, { threshold: 0.4 });
+    io.observe(el);
+  });
+
+  /* ---- 5. RFQ form ---- */
+  const file = document.querySelector('[data-file]');
+  if (file) {
+    file.addEventListener('change', () => {
+      const name = document.querySelector('[data-file-name]');
+      if (name) name.textContent = file.files && file.files[0] ? file.files[0].name : 'No file selected';
+    });
+  }
+  const form = document.querySelector('[data-rfq]');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const ok = document.querySelector('[data-rfq-ok]');
+      form.hidden = true;
+      if (ok) { ok.hidden = false; ok.focus(); }
+    });
+  }
+
+  /* icons */
+  const drawIcons = () => { if (window.lucide && window.lucide.createIcons) window.lucide.createIcons(); };
+  drawIcons();
+  window.addEventListener('load', drawIcons);
+})();
+</script>
 </body></html>

@@ -268,11 +268,16 @@ button,input,select,textarea{font:inherit;color:inherit}
 .aae-nav__phone:hover{color:var(--text-link)}
 .aae-nav__toggle{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-2);margin-left:auto;min-height:var(--tap-min);min-width:var(--tap-min);padding-inline:var(--sp-3);background:var(--aae-navy);color:var(--aae-white);border:0;border-radius:var(--radius);font-family:var(--font-display);font-size:13px;font-weight:var(--fw-semibold);text-transform:uppercase;letter-spacing:.06em;cursor:pointer}
 @media (min-width:1240px){.aae-nav__links,.aae-nav__actions{display:flex}.aae-nav__toggle{display:none}}
-.aae-nav__backdrop{position:fixed;inset:0;z-index:190;background:rgba(15,15,20,.55);border:0;padding:0;touch-action:none;opacity:0;transition:opacity var(--dur) var(--ease)}
-.aae-nav__backdrop.is-open{opacity:1}
-.aae-drawer{position:fixed;inset:0 0 0 auto;z-index:200;width:min(88vw,360px);display:flex;flex-direction:column;background:var(--aae-white);box-shadow:var(--shadow-raised);transform:translateX(100%);transition:transform var(--dur-slow) var(--ease)}
-.aae-drawer.is-open{transform:translateX(0)}
-@media (prefers-reduced-motion:reduce){.aae-drawer,.aae-nav__backdrop{transition:none}}
+.aae-nav__backdrop{position:fixed;inset:0;z-index:190;background:rgba(15,15,20,.55);border:0;padding:0;touch-action:none}
+.aae-nav__backdrop:not([hidden]){animation:aae-fade-in var(--dur) var(--ease) both}
+/* Visibility depends ONLY on the [hidden] attribute — never on a class. The slide-in
+   is a decorative animation on appearance, so if anything stops the animation the
+   drawer is still fully on screen and usable. */
+.aae-drawer{position:fixed;inset:0 0 0 auto;z-index:200;width:min(88vw,360px);display:flex;flex-direction:column;background:var(--aae-white);box-shadow:var(--shadow-raised)}
+.aae-drawer:not([hidden]){animation:aae-slide-in var(--dur-slow) var(--ease) both}
+@keyframes aae-slide-in{from{transform:translateX(100%)}to{transform:translateX(0)}}
+@keyframes aae-fade-in{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.aae-drawer:not([hidden]),.aae-nav__backdrop:not([hidden]){animation:none}}
 .aae-drawer__top{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);padding-inline:20px;border-bottom:1px solid var(--border-default)}
 .aae-drawer__close{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-2);min-height:var(--tap-min);padding-inline:var(--sp-3);background:transparent;border:1px solid var(--border-strong);border-radius:var(--radius);color:var(--aae-navy);font-family:var(--font-display);font-size:13px;font-weight:var(--fw-semibold);text-transform:uppercase;letter-spacing:.06em;cursor:pointer}
 .aae-drawer__close:hover{background:var(--surface-tint)}
@@ -302,6 +307,56 @@ button,input,select,textarea{font:inherit;color:inherit}
 @media (min-width:560px){.aae-hero__ctas .aae-btn{flex:0 0 auto}}
 .aae-hero--compact .aae-hero__inner{padding-block:clamp(40px,6vw,72px)}
 .aae-hero--compact h1{font-size:var(--fs-h1)}
+
+/* ---------- Hero: major variant ----------
+   Full-bleed maritime photograph under a rich navy gradient, with a faint
+   structural grid. Used on the homepage only; every other page keeps --compact. */
+.aae-hero--major{min-height:clamp(520px,78vh,760px);display:flex;align-items:flex-end}
+.aae-hero--major .aae-hero__media img.is-active{opacity:.8;filter:saturate(.5) contrast(1.14) brightness(.66)}
+.aae-hero--major .aae-hero__scrim{background:linear-gradient(100deg,rgba(11,10,30,.95) 0%,rgba(15,14,40,.86) 34%,rgba(22,20,58,.58) 68%,rgba(30,26,74,.34) 100%)}
+.aae-hero__grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:calc(100% / 6) 100%}
+.aae-hero__base{position:absolute;left:0;right:0;bottom:0;height:180px;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(15,14,40,.72))}
+.aae-hero--major .aae-hero__inner{width:100%;padding-block:clamp(72px,11vw,132px)}
+.aae-hero--major h1{max-width:16ch;font-size:clamp(38px,6.2vw,76px)}
+.aae-hero__badge{display:inline-flex;align-items:center;gap:var(--sp-3);align-self:flex-start;margin-bottom:var(--sp-5);padding:8px 14px;border:1px solid rgba(255,255,255,.28);border-radius:var(--radius);background:rgba(255,255,255,.07);font-family:var(--font-mono);font-size:var(--fs-spec);letter-spacing:.04em;color:var(--aae-white)}
+.aae-hero__badge b{color:var(--aae-orange);font-weight:var(--fw-medium)}
+.aae-hero__meta{display:flex;flex-wrap:wrap;gap:var(--sp-3) var(--sp-6);margin-top:var(--sp-7);padding-top:var(--sp-5);border-top:1px solid rgba(255,255,255,.16)}
+.aae-hero__metaitem{font-family:var(--font-mono);font-size:var(--fs-spec);color:#C9C7DE}
+.aae-hero__metaitem b{display:block;font-family:var(--font-display);font-size:22px;font-weight:var(--fw-bold);color:var(--aae-white);letter-spacing:var(--ls-display)}
+
+/* ---------- Sequenced service card ----------
+   The nine trades in ship-repair execution order. The step number is the
+   organising device: procurement buyers read the sequence, not the alphabet. */
+.aae-seq{display:grid;gap:var(--sp-4);grid-template-columns:1fr}
+@media (min-width:760px){.aae-seq{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.aae-seq{grid-template-columns:repeat(3,1fr)}}
+.aae-seqcard{position:relative;display:flex;flex-direction:column;background:var(--aae-white);text-decoration:none;border:1px solid var(--border-default);border-radius:var(--radius);overflow:hidden;transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.aae-seqcard:hover{border-color:var(--aae-navy);box-shadow:var(--shadow-raised);transform:translateY(-2px)}
+.aae-seqcard:focus-visible{outline:var(--focus-width) solid var(--focus-ring);outline-offset:-3px}
+.aae-seqcard__media{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--surface-tint)}
+.aae-seqcard__media img{width:100%;height:100%;object-fit:cover;transition:transform 700ms var(--ease-out)}
+.aae-seqcard:hover .aae-seqcard__media img{transform:scale(1.04)}
+.aae-seqcard__n{position:absolute;left:0;top:0;z-index:1;min-width:52px;padding:8px 12px;background:var(--aae-navy);color:var(--aae-white);font-family:var(--font-mono);font-size:var(--fs-spec);letter-spacing:.06em}
+.aae-seqcard__body{display:flex;flex-direction:column;gap:var(--sp-2);flex:1;padding:var(--sp-5)}
+.aae-seqcard__body h3{font-family:var(--font-display);font-size:var(--fs-h4);font-weight:var(--fw-semibold);color:var(--aae-ink);letter-spacing:var(--ls-tight);text-wrap:pretty}
+.aae-seqcard__body p{font-size:var(--fs-body-sm);color:var(--text-secondary);text-wrap:pretty}
+.aae-seqcard__go{display:inline-flex;align-items:center;gap:var(--sp-2);margin-top:auto;padding-top:var(--sp-4);font-family:var(--font-mono);font-size:var(--fs-spec);color:var(--aae-orange)}
+.aae-seqcard:hover .aae-seqcard__go{text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- Equipment callout ----------
+   Named plant, on a dark card, with its rating in mono. Buyers check the
+   compressor rating before anything else on a blasting tender. */
+.aae-equip{display:grid;gap:var(--sp-4);grid-template-columns:1fr}
+@media (min-width:720px){.aae-equip{grid-template-columns:repeat(2,1fr)}}
+.aae-equipcard{display:flex;flex-direction:column;gap:var(--sp-4);padding:var(--sp-6);border:1px solid var(--border-inverse);border-radius:var(--radius);background:linear-gradient(150deg,#1C1948 0%,#262261 100%)}
+.aae-equipcard__top{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-4)}
+.aae-equipcard__name{font-family:var(--font-display);font-size:var(--fs-h4);font-weight:var(--fw-bold);color:var(--aae-white);letter-spacing:var(--ls-tight)}
+.aae-equipcard__qty{flex:none;padding:6px 10px;border:1px solid rgba(255,255,255,.24);border-radius:var(--radius);font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--aae-white)}
+.aae-equipcard__rating{font-family:var(--font-display);font-size:clamp(32px,4.4vw,48px);font-weight:var(--fw-bold);line-height:1;letter-spacing:var(--ls-display);color:var(--aae-orange)}
+.aae-equipcard__rating span{font-family:var(--font-mono);font-size:var(--fs-spec);font-weight:400;color:#C9C7DE;letter-spacing:.06em}
+.aae-equipcard__rows{display:grid;gap:0;margin:0;padding:0;list-style:none}
+.aae-equipcard__rows li{display:flex;justify-content:space-between;gap:var(--sp-4);padding:10px 0;border-top:1px solid rgba(255,255,255,.14);font-family:var(--font-mono);font-size:var(--fs-spec);color:#C9C7DE}
+.aae-equipcard__rows b{font-weight:400;color:var(--aae-white);text-align:right}
 
 /* ---------- Stat bar ---------- */
 .aae-statbar{border-block:1px solid var(--border-default);background:var(--aae-white)}
@@ -500,10 +555,12 @@ body.is-locked .aae-whatsapp{opacity:0;pointer-events:none;transition:opacity va
 
 /* ===== site build additions ===== */
 [hidden]{display:none!important}
-.aae-grid{display:grid;gap:var(--sp-5);grid-template-columns:1fr}
-@media (min-width:700px){.aae-grid--2{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:980px){.aae-grid--3{grid-template-columns:repeat(3,1fr)}}
-.aae-split{display:grid;gap:var(--sp-9);grid-template-columns:1fr}
+.aae-grid{display:grid;gap:var(--sp-5);grid-template-columns:minmax(0,1fr)}
+.aae-grid>*{min-width:0}
+@media (min-width:700px){.aae-grid--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:980px){.aae-grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.aae-split{display:grid;gap:var(--sp-9);grid-template-columns:minmax(0,1fr)}
+.aae-split>*{min-width:0}
 @media (min-width:980px){.aae-split{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}}
 .aae-prose{display:grid;gap:var(--sp-4);max-width:var(--measure);color:var(--text-secondary)}
 .aae-figure{margin:0}
@@ -514,11 +571,35 @@ body.is-locked .aae-whatsapp{opacity:0;pointer-events:none;transition:opacity va
 .aae-scopelist li::before{content:"—";font-family:var(--font-mono);color:var(--rule-accent)}
 .aae-tags{display:flex;flex-wrap:wrap;gap:var(--sp-2)}
 .aae-icon svg,svg.lucide{display:block}
-.aae-btn svg,.aae-nav__phone svg,.aae-whatsapp svg,.aae-drawer__link svg,.aae-drawer__close svg,.aae-nav__toggle svg,.aae-servicecard__link svg{width:1em;height:1em;flex:none}
+.aae-btn svg,.aae-nav__phone svg,.aae-whatsapp svg,.aae-drawer__link svg,.aae-drawer__close svg,.aae-nav__toggle svg,.aae-servicecard__link svg,.aae-seqcard__go svg,.aae-hero__badge svg{width:1em;height:1em;flex:none}
 .aae-cap__icon svg{width:22px;height:22px}
 .aae-skip{position:absolute;left:-9999px;top:0;z-index:300;background:var(--aae-navy);color:#fff;padding:12px 16px;border-radius:var(--radius)}
 .aae-skip:focus{left:var(--sp-4);top:var(--sp-2)}
-/* body scroll lock: position-fixed with a saved offset, so the page does not jump */
 body.is-locked{position:fixed;left:0;right:0;width:100%;overflow:hidden}
-/* inline prose links keep a comfortable target on touch */
 .aae-section p a,.aae-form__footnote a{padding-block:6px}
+.aae-section--navy a{color:#F0B183}
+.aae-section--navy a:hover{color:var(--aae-white)}
+
+/* ---- narrow-viewport hardening (verified at 360px) ---- */
+.aae-seq,.aae-equip{grid-template-columns:minmax(0,1fr)}
+.aae-seq>*,.aae-equip>*{min-width:0}
+@media (min-width:760px){.aae-seq{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1100px){.aae-seq{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:720px){.aae-equip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.aae-statbar__grid{grid-template-columns:minmax(0,1fr)}
+@media (min-width:768px){.aae-statbar__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* a spec table is the widest thing on a service page: let it scroll, not the page */
+.aae-spectable__wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.aae-footer__brand>div{min-width:0}
+.aae-footer__top,.aae-form__grid{min-width:0}
+/* long tokens (email addresses, reference numbers) must not push the layout */
+body,.aae-spec,.aae-footer p,.aae-cap__d{overflow-wrap:break-word}
+/* the homepage hero is the pitch, but it should not run to two screens on a phone */
+@media (max-width:559px){
+ .aae-hero--major{min-height:auto}
+ .aae-hero--major .aae-hero__inner{padding-block:48px 40px}
+ .aae-hero__meta{gap:var(--sp-4) var(--sp-5);margin-top:var(--sp-6);padding-top:var(--sp-4)}
+ .aae-hero__metaitem{flex:1 1 40%}
+ .aae-hero__metaitem b{font-size:19px}
+ .aae-hero__badge{margin-bottom:var(--sp-4)}
+}

@@ -1,31 +1,53 @@
 # Al-Ashfaq Enterprises — deployable website
 
-Plain static site. No build step, no framework, no React. Upload this folder and it works.
+Plain static site. No build step, no framework, no React. Every page is fully
+self-contained: the CSS and JS are inlined into each HTML file, so there is nothing
+for the server to 404.
 
-```
-site/
-├── index.html          Home
-├── about.html          About
-├── capability.html     Capability & plant
-├── projects.html       Project references (no photographs, by design)
-├── hse.html            HSE & worker welfare
-├── equipment-hire.html Air compressor hire (PDS 655 / PDS 390)
-├── rfq.html            Request a quotation
-├── contact.html        Contact (same form + contact block)
-├── 404.html            Not found
-├── services/
-│   ├── index.html      Services hub — 6 cards + equipment-hire band
-│   ├── surface-protection.html
-│   ├── insulation.html
-│   ├── deck-covering.html
-│   ├── fabrication.html
-│   ├── cable-tray.html
-│   └── scaffolding.html
-├── styles.css          One stylesheet (design-system tokens + components, flattened)
-├── app.js              Drawer, hero cross-fade, scroll reveal, stat count-up, form
-├── vercel.json         Clean URLs + asset caching
-└── assets/             Logo + photographs
-```
+## Service sequence
+
+The nine trades are ordered by **ship-repair execution sequence**, not alphabetically.
+Insulation is phase 06-07 because it is the closing phase of a docking, not the first:
+
+| # | Service | Page |
+|---|---|---|
+| 01 | Grit blasting / abrasive blasting (underwater hull & deck) | services/grit-blasting.html |
+| 02 | Bilges & tank cleaning and painting | services/tank-cleaning.html |
+| 03 | De-rusting & painting | services/de-rusting.html |
+| 04 | Erection / dismantling scaffolding (with enclosure cloth) | services/scaffolding.html |
+| 05 | Steel renewal & fabrication | services/steel-renewal.html |
+| 06 | Stud welding & insulation | services/stud-welding.html |
+| 07 | Insulation cladding on exhaust | services/exhaust-cladding.html |
+| 08 | Cable tray fitting | services/cable-tray.html |
+| 09 | Deck covering & anti-skid coating | services/deck-covering.html |
+
+The three old service URLs (surface-protection, insulation, fabrication) are kept as
+redirect pages so any link already shared keeps working.
+
+## Photography
+
+The photographs are the ones you supplied, now all in use.
+
+Seven carry a visible stock-library watermark (Adobe Stock, getty images, iStock,
+123RF). You asked for them to be used, so they are in place — but a procurement
+buyer reading a pre-qualification site does notice a watermark, so replacing these
+with your own site photographs is still the single highest-value change you can make:
+
+- tank-entry-01 (Adobe Stock) — tank manhole entry · used on the home page, services index and HSE page
+- tank-collage-01 — tank internals before/after · tank cleaning page
+- paint-hull-02 (getty images) — hull spray painting · held in assets, not currently placed
+- scaf-ship-01 / 02 / 03 (iStock) — ship scaffolding · home hero, services index, scaffolding page, projects page
+- deck-chip-01 (123RF) — deck chipping tool · deck covering page
+
+Two files are still held back, because they carry another company's advertising
+rather than a watermark, and publishing them would put a competitor's phone number
+on your site:
+
+- "Stud Welding Products 800-252-1919" printed across the stud-welding photo
+- "4½\" & 7\" Flap Discs available" printed across the de-rusting photo
+
+Both slots are filled with clean alternatives from your own upload. Send replacements
+for those two subjects and they will drop straight in at the same aspect ratio.
 
 ## Deploying to Vercel
 
@@ -70,12 +92,54 @@ Checked on the built pages, not assumed:
 - **Icons** — all 27 render; no unreplaced placeholders left in the DOM.
 - **Console** — clean, no errors on any page.
 
+## Why the menu broke on Vercel, and why it can't again
+
+`app.js` and `styles.css` were not being served on the live site. Rather than keep
+fighting the host's asset resolution, **every page is now fully self-contained**:
+
+- The stylesheet is inlined in a `<style>` block in each page's `<head>`.
+- The script is inlined in a `<script>` block at the end of each page's `<body>`.
+- No page references `styles.css` or `app.js` externally any more. Verified: zero
+  external references to either file across all 16 pages.
+
+There is now nothing for the server to 404. Each page is 51–64 KB of HTML and needs
+no CSS or JS request at all, which is also fewer round trips on 4G.
+
+`styles.css` and `app.js` are still in the folder as the editable source. **If you
+change either one you must re-inline it into the pages** — otherwise your edit will
+have no effect, because the pages no longer load those files. Ask me and I will
+re-run the inlining.
+
+Images still load from `assets/`, and icons still come from the Lucide CDN. If the
+icon CDN ever fails the menu button still reads "Menu" in text, so it stays usable.
+
+## The menu bug, and the actual root cause
+
+Three things were wrong, fixed in this order:
+
+1. **Stacking context.** The drawer sat inside `<header>`, and a `position:sticky`
+   header with a `z-index` creates a stacking context — the drawer was trapped
+   behind the page whatever its own `z-index`. It is now a direct child of `<body>`.
+2. **Assets not served.** `styles.css` and `app.js` were 404ing on the host, so the
+   button had nothing wired to it and the top bar lost its styling. Both files are
+   now **inlined into every page**, so there is nothing left to 404.
+3. **Visibility depended on a CSS class.** This was the one that kept the bug alive.
+   The drawer was parked off-screen with `transform:translateX(100%)` and only slid
+   in when JS added an `is-open` class. If that class or its transition did not take
+   effect, the scroll lock still applied — the scrollbar vanished — but the panel
+   stayed off-screen. That is exactly the symptom that was reported.
+
+   **The drawer's visibility is now the `hidden` attribute and nothing else.** No
+   class, no timer, no transition to wait on. The slide-in is a decorative CSS
+   animation on appearance. Tested with every animation and transition forcibly
+   disabled: the drawer still appears on screen, is the topmost element, and closes
+   on the button, the backdrop and Escape.
+
 ## Before you go live
 
-- **Cache busting.** `styles.css` and `app.js` are referenced with `?v=3`. If you edit either
-  file, bump that number on every page (find-and-replace `?v=3` → `?v=4`) or returning visitors
-  will keep the old cached copy. This is exactly what caused a "my changes aren't showing"
-  problem during the build.
+- **Cache busting.** Not needed any more — the CSS and JS live inside each HTML file, so a
+  page update carries its own styling and behaviour. If a visitor sees an old page, it is
+  ordinary HTML caching; a hard reload clears it.
 
 - **The RFQ form does not send anywhere yet.** It validates and shows a confirmation on the
   page only. Wire it to a handler — Formspree, Web3Forms or a Vercel serverless function — by

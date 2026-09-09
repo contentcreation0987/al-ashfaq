@@ -11,7 +11,12 @@
   /* ---- 1. drawer ----------------------------------------------------------
      The drawer and backdrop are direct children of <body>, NOT of the sticky
      <header>: a sticky element with a z-index creates a stacking context, which
-     would trap the drawer behind page content however high its own z-index. */
+     would trap the drawer behind page content however high its own z-index.
+     An inline fallback in the page <head> may already have wired this up (in
+     case app.js failed to load); the shared __aaeDrawerInit flag prevents a
+     double bind. */
+  const drawerAlreadyWired = window.__aaeDrawerInit;
+  if (!drawerAlreadyWired) window.__aaeDrawerInit = true;
   const drawer = document.querySelector('[data-drawer]');
   const backdrop = document.querySelector('[data-backdrop]');
   const openBtn = document.querySelector('[data-drawer-open]');
@@ -33,57 +38,48 @@
   const setDrawer = (on) => {
     if (!drawer || on === isOpen) return;
     isOpen = on;
+    // Visibility is the [hidden] attribute and nothing else — no class, no timer,
+    // no transition to wait on. If the CSS animation never runs, the drawer is
+    // still on screen.
+    drawer.hidden = !on;
+    if (backdrop) backdrop.hidden = !on;
+    if (openBtn) openBtn.setAttribute('aria-expanded', String(on));
     if (on) {
-      drawer.hidden = false;
-      if (backdrop) backdrop.hidden = false;
       lock();
-      // force a reflow so the transform transition runs from its start value.
-      // (requestAnimationFrame is throttled in background/offscreen frames.)
-      void drawer.offsetWidth;
-      drawer.classList.add('is-open');
-      if (backdrop) backdrop.classList.add('is-open');
-      if (openBtn) openBtn.setAttribute('aria-expanded', 'true');
       if (closeBtn) closeBtn.focus();
     } else {
-      drawer.classList.remove('is-open');
-      if (backdrop) backdrop.classList.remove('is-open');
-      if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
       unlock();
-      const finish = () => {
-        if (isOpen) return;
-        drawer.hidden = true;
-        if (backdrop) backdrop.hidden = true;
-      };
-      if (reduced) finish();
-      else setTimeout(finish, 260);
       if (openBtn && openBtn.offsetParent) openBtn.focus();
     }
   };
 
-  if (openBtn) openBtn.addEventListener('click', () => setDrawer(true));
-  if (closeBtn) closeBtn.addEventListener('click', () => setDrawer(false));
-  if (backdrop) backdrop.addEventListener('click', () => setDrawer(false));
-  // a tap on a drawer link should close it before the page changes
-  if (drawer) {
-    drawer.querySelectorAll('a[href]').forEach((a) => {
-      a.addEventListener('click', () => setDrawer(false));
+  // Bind unless an inline fallback already did (shared __aaeDrawerInit flag).
+  if (!drawerAlreadyWired) {
+    if (openBtn) openBtn.addEventListener('click', () => setDrawer(true));
+    if (closeBtn) closeBtn.addEventListener('click', () => setDrawer(false));
+    if (backdrop) backdrop.addEventListener('click', () => setDrawer(false));
+    // a tap on a drawer link should close it before the page changes
+    if (drawer) {
+      drawer.querySelectorAll('a[href]').forEach((a) => {
+        a.addEventListener('click', () => setDrawer(false));
+      });
+    }
+    document.addEventListener('keydown', (e) => {
+      if (!isOpen) return;
+      if (e.key === 'Escape') { setDrawer(false); return; }
+      if (e.key !== 'Tab' || !drawer) return;
+      const f = [...drawer.querySelectorAll('a[href],button:not([disabled])')]
+        .filter((el) => el.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+    // close if the viewport grows into the desktop nav while the drawer is open
+    window.matchMedia('(min-width: 1240px)').addEventListener('change', (e) => {
+      if (e.matches) setDrawer(false);
     });
   }
-  document.addEventListener('keydown', (e) => {
-    if (!isOpen) return;
-    if (e.key === 'Escape') { setDrawer(false); return; }
-    if (e.key !== 'Tab' || !drawer) return;
-    const f = [...drawer.querySelectorAll('a[href],button:not([disabled])')]
-      .filter((el) => el.offsetParent !== null);
-    if (!f.length) return;
-    const first = f[0], last = f[f.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  });
-  // close if the viewport grows into the desktop nav while the drawer is open
-  window.matchMedia('(min-width: 1240px)').addEventListener('change', (e) => {
-    if (e.matches) setDrawer(false);
-  });
 
   /* ---- 2. hero cross-fade ---- */
   const media = document.querySelector('[data-hero-rotate]');
@@ -118,11 +114,14 @@
     window.addEventListener('load', check);
   }
 
-  /* ---- 4. stat count-up ---- */
+  /* ---- 4. stat count-up ----
+     Years are never animated: counting 0 → 1998 shows "1986" mid-flight, which
+     reads as a wrong founding date. Only quantities count up. */
   document.querySelectorAll('[data-count]').forEach((el) => {
     const raw = el.getAttribute('data-count');
+    const isYear = /^(19|20)\d{2}$/.test(raw.trim());
     const m = /^(\D*)(\d[\d,]*)(.*)$/.exec(raw);
-    if (!m || reduced) { el.textContent = raw; return; }
+    if (!m || reduced || isYear) { el.textContent = raw; return; }
     const target = Number(m[2].replace(/,/g, ''));
     const grouped = m[2].includes(',');
     const fmt = (v) => (grouped ? v.toLocaleString('en-US') : String(v));

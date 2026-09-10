@@ -339,13 +339,13 @@ button,input,select,textarea{font:inherit;color:inherit}
 @media (min-width:1100px){.aae-seq{grid-template-columns:repeat(3,1fr)}}
 .aae-seqcard{position:relative;display:flex;flex-direction:column;background:var(--aae-white);text-decoration:none;border:1px solid var(--border-default);border-radius:var(--radius);overflow:hidden;transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease)}
 .aae-seqcard:hover{border-color:var(--aae-navy);box-shadow:var(--shadow-raised);transform:translateY(-2px)}
-.aae-seqcard:focus-visible{outline:var(--focus-width) solid var(--focus-ring);outline-offset:-3px}
+.aae-seqcard:focus-visible{outline:2px solid var(--focus-ring);outline-offset:-3px}
 .aae-seqcard__media{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--surface-tint)}
 .aae-seqcard__media img{width:100%;height:100%;object-fit:cover;transition:transform 700ms var(--ease-out)}
 .aae-seqcard:hover .aae-seqcard__media img{transform:scale(1.04)}
 .aae-seqcard__n{position:absolute;left:0;top:0;z-index:1;min-width:52px;padding:8px 12px;background:var(--aae-navy);color:var(--aae-white);font-family:var(--font-mono);font-size:var(--fs-spec);letter-spacing:.06em}
 .aae-seqcard__body{display:flex;flex-direction:column;gap:var(--sp-2);flex:1;padding:var(--sp-5)}
-.aae-seqcard__body h3{font-family:var(--font-display);font-size:var(--fs-h4);font-weight:var(--fw-semibold);color:var(--aae-ink);letter-spacing:var(--ls-tight);text-wrap:pretty}
+.aae-seqcard__body h3{font-family:var(--font-display);font-size:var(--fs-h4);font-weight:var(--fw-semibold);color:var(--aae-ink);letter-spacing:var(--ls-heading);text-wrap:pretty}
 .aae-seqcard__body p{font-size:var(--fs-body-sm);color:var(--text-secondary);text-wrap:pretty}
 .aae-seqcard__go{display:inline-flex;align-items:center;gap:var(--sp-2);margin-top:auto;padding-top:var(--sp-4);font-family:var(--font-mono);font-size:var(--fs-spec);color:var(--aae-orange)}
 .aae-seqcard:hover .aae-seqcard__go{text-decoration:underline;text-underline-offset:3px}
@@ -357,7 +357,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 @media (min-width:720px){.aae-equip{grid-template-columns:repeat(2,1fr)}}
 .aae-equipcard{display:flex;flex-direction:column;gap:var(--sp-4);padding:var(--sp-6);border:1px solid var(--border-inverse);border-radius:var(--radius);background:linear-gradient(150deg,#1C1948 0%,#262261 100%)}
 .aae-equipcard__top{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-4)}
-.aae-equipcard__name{font-family:var(--font-display);font-size:var(--fs-h4);font-weight:var(--fw-bold);color:var(--aae-white);letter-spacing:var(--ls-tight)}
+.aae-equipcard__name{font-family:var(--font-display);font-size:var(--fs-h4);font-weight:var(--fw-bold);color:var(--aae-white);letter-spacing:var(--ls-heading)}
 .aae-equipcard__qty{flex:none;padding:6px 10px;border:1px solid rgba(255,255,255,.24);border-radius:var(--radius);font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--aae-white)}
 .aae-equipcard__rating{font-family:var(--font-display);font-size:clamp(32px,4.4vw,48px);font-weight:var(--fw-bold);line-height:1;letter-spacing:var(--ls-display);color:var(--aae-orange)}
 .aae-equipcard__rating span{font-family:var(--font-mono);font-size:var(--fs-spec);font-weight:400;color:#C9C7DE;letter-spacing:.06em}
@@ -383,7 +383,10 @@ button,input,select,textarea{font:inherit;color:inherit}
 /* ---------- Service card ---------- */
 .aae-servicecard{display:flex;flex-direction:column;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius);transition:border-color var(--dur) var(--ease)}
 .aae-servicecard:hover{border-color:var(--aae-navy)}
-.aae-servicecard__media{aspect-ratio:var(--ratio-card);background:var(--surface-tint);overflow:hidden;border-bottom:1px solid var(--border-default)}
+.aae-servicecard__media{position:relative;aspect-ratio:var(--ratio-card);background:var(--surface-tint);overflow:hidden;border-bottom:1px solid var(--border-default)}
+.aae-servicecard__phase{position:absolute;left:0;top:0;z-index:1;display:flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 10px;background:var(--aae-navy);color:var(--aae-white);font-family:var(--font-mono);font-size:var(--fs-spec);font-weight:500;letter-spacing:.04em}
+.aae-servicecard__phase--inline{position:static;align-self:flex-start;margin-bottom:var(--sp-3)}
+.aae-servicecard:hover .aae-servicecard__phase{background:var(--aae-orange)}
 .aae-servicecard__media img{width:100%;height:100%;object-fit:cover;transition:transform 700ms var(--ease)}
 .aae-servicecard:hover .aae-servicecard__media img{transform:scale(1.05)}
 .aae-servicecard__icon{transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease)}
@@ -413,13 +416,29 @@ button,input,select,textarea{font:inherit;color:inherit}
 .aae-whatsapp:hover{transform:translateY(-2px)}
 
 /* ---------- Project reference card ---------- */
+/* Counter badge: industrial pill, mono figure against navy. */
+.aae-countbadge{display:inline-flex;align-items:center;gap:var(--sp-3);padding:10px var(--sp-4) 10px var(--sp-3);background:var(--aae-navy);border-radius:999px;color:var(--aae-white)}
+.aae-countbadge__n{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:28px;padding:0 8px;background:var(--aae-orange);border-radius:999px;font-family:var(--font-mono);font-size:var(--fs-body-sm);font-weight:600;color:var(--aae-white);letter-spacing:.02em}
+.aae-countbadge__t{font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-body-sm);letter-spacing:.06em;text-transform:uppercase}
 .aae-projectcard{display:grid;gap:0;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius);overflow:hidden}
+/* Card header block: customer, division and year read as one unit. */
+.aae-projectcard__head{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:var(--sp-3);padding:var(--sp-5);background:var(--aae-navy);color:var(--aae-white);border-bottom:3px solid var(--aae-orange)}
+.aae-projectcard__cust{display:block;font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-h4);line-height:1.25;letter-spacing:var(--ls-heading);color:var(--aae-white)}
+.aae-projectcard__div{display:block;margin-top:6px;font-family:var(--font-mono);font-size:var(--fs-spec);color:#C7C6DA}
+.aae-projectcard__yr{flex:none;padding:4px 10px;border:1px solid rgba(255,255,255,.28);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:var(--fs-spec);color:var(--aae-white)}
 .aae-projectcard__row{display:grid;grid-template-columns:104px 1fr;gap:var(--sp-4);padding:var(--sp-4) var(--sp-5);border-bottom:1px solid var(--border-default)}
 .aae-projectcard__row:last-child{border-bottom:0}
 .aae-projectcard__k{font-family:var(--font-mono);font-size:var(--fs-eyebrow);letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--text-muted);padding-top:2px}
 .aae-projectcard__v{font-size:var(--fs-body-sm);color:var(--text-primary)}
 .aae-projectcard__v strong{font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-h4);color:var(--aae-navy)}
+/* Specification rows: mono figures, dotted leader to the value. */
+.aae-projectcard__specs{display:grid;gap:0;margin:0;padding:0}
+.aae-projectcard__spec{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--sp-2);padding:6px 0;border-bottom:1px dotted var(--border-default)}
+.aae-projectcard__spec:last-child{border-bottom:0}
+.aae-projectcard__spec dt{flex:1 1 auto;min-width:0;font-size:var(--fs-body-sm);color:var(--text-secondary)}
+.aae-projectcard__spec dd{flex:none;margin:0;font-family:var(--font-mono);font-size:var(--fs-spec);font-weight:500;color:var(--aae-navy)}
 .aae-projectcard__tags{display:flex;flex-wrap:wrap;gap:var(--sp-2)}
+@media (max-width:479px){.aae-projectcard__row{grid-template-columns:1fr;gap:var(--sp-2)}}
 .aae-tag{display:inline-flex;align-items:center;padding:3px var(--sp-2);background:var(--surface-tint);color:var(--aae-navy);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:var(--fs-eyebrow);letter-spacing:.04em}
 .aae-projectcard__year{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
 
@@ -673,9 +692,9 @@ body,.aae-spec,.aae-footer p,.aae-cap__d{overflow-wrap:break-word}
 <a class="aae-btn aae-btn--outline-inverse aae-btn--lg" href="tel:03462944433"><i data-lucide="phone"></i><span>0346 294 4433</span></a></div></div></section></main><footer class="aae-footer"><div class="aae-footer__inner"><div class="aae-footer__top">
 <div class="aae-footer__brand"><img src="assets/logo.png" alt="Al-Ashfaq Enterprises ship's wheel logo" width="76" height="76">
 <div><b>Al-Ashfaq Enterprises</b>
-<p>Grit blasting, tank cleaning, de-rusting and painting, scaffolding access, steel renewal, stud welding and insulation, exhaust cladding, cable tray fitting and deck anti-skid coating for marine, defence and heavy industry. Operating from West Wharf Road, Karachi since 1998.</p>
+<p>Tank cleaning, grit blasting, de-rusting and painting, scaffolding access, steel renewal, stud welding and insulation, exhaust cladding, cable tray fitting and deck anti-skid coating for marine, defence and heavy industry. Operating from West Wharf Road, Karachi since 1998.</p>
 <p class="aae-spec" style="margin-top:var(--sp-4);color:#C7C6DA"><span style="display:block">2nd Floor, Sattar Chamber</span><span style="display:block">West Wharf Road, Karachi, Pakistan</span><span style="display:block;margin-top:8px">0346 294 4433</span><span style="display:block">alashfaqenterprises94@gmail.com</span></p></div></div>
-<div class="aae-footer__col"><h3>Services</h3><ul><li><a href="services/grit-blasting.html">Grit blasting &amp; abrasive blasting</a></li><li><a href="services/tank-cleaning.html">Bilges &amp; tank cleaning and painting</a></li><li><a href="services/de-rusting.html">De-rusting &amp; painting</a></li><li><a href="services/scaffolding.html">Erection &amp; dismantling of scaffolding</a></li><li><a href="services/steel-renewal.html">Steel renewal &amp; fabrication</a></li><li><a href="services/stud-welding.html">Stud welding &amp; insulation</a></li><li><a href="services/exhaust-cladding.html">Insulation cladding on exhaust</a></li><li><a href="services/cable-tray.html">Cable tray fitting</a></li><li><a href="services/deck-covering.html">Deck covering &amp; anti-skid coating</a></li></ul></div>
+<div class="aae-footer__col"><h3>Services</h3><ul><li><a href="services/tank-cleaning.html">Bilges &amp; tank cleaning and painting</a></li><li><a href="services/grit-blasting.html">Grit blasting &amp; abrasive blasting</a></li><li><a href="services/de-rusting.html">De-rusting &amp; painting</a></li><li><a href="services/scaffolding.html">Erection &amp; dismantling of scaffolding</a></li><li><a href="services/steel-renewal.html">Steel renewal &amp; fabrication</a></li><li><a href="services/stud-welding.html">Stud welding &amp; insulation</a></li><li><a href="services/exhaust-cladding.html">Insulation cladding on exhaust</a></li><li><a href="services/cable-tray.html">Cable tray fitting</a></li><li><a href="services/deck-covering.html">Deck covering &amp; anti-skid coating</a></li></ul></div>
 <div class="aae-footer__col"><h3>Company</h3><ul><li><a href="about.html">About</a></li><li><a href="capability.html">Capability &amp; plant</a></li><li><a href="equipment-hire.html">Equipment hire</a></li><li><a href="projects.html">Project references</a></li><li><a href="hse.html">HSE &amp; welfare</a></li></ul></div>
 <div class="aae-footer__col"><h3>Procurement</h3><ul><li><a href="rfq.html">Request a quotation</a></li><li><a href="contact.html">Contact</a></li><li><a href="tel:03462944433">0346 294 4433</a></li></ul></div></div>
 <div class="aae-footer__bottom"><span>© 2026 Al-Ashfaq Enterprises. Established 1998.</span><span>NTN / registration details on request</span></div></div></footer><div class="aae-nav__backdrop" data-backdrop hidden></div>

@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Al-Ashfaq Enterprises — ship repair & industrial services contractor, Karachi</title>
-<meta name="description" content="Grit blasting, tank cleaning, de-rusting and painting, scaffolding, steel renewal, stud welding, insulation, cable tray and deck anti-skid coating for Karachi Shipyard and the Pakistan Navy Dockyard. Established 1998.">
+<meta name="description" content="Tank cleaning, grit blasting, de-rusting and painting, scaffolding, steel renewal, stud welding, insulation, cable tray and deck anti-skid coating for Karachi Shipyard and the Pakistan Navy Dockyard. Established 1998.">
 <link rel="icon" href="assets/logo.png">
 <style>/* Webfonts. No binaries were supplied with the brand pack, so the three families
    are loaded from Google Fonts. Archivo / Inter / IBM Plex Mono are all Google
@@ -339,13 +339,13 @@ button,input,select,textarea{font:inherit;color:inherit}
 @media (min-width:1100px){.aae-seq{grid-template-columns:repeat(3,1fr)}}
 .aae-seqcard{position:relative;display:flex;flex-direction:column;background:var(--aae-white);text-decoration:none;border:1px solid var(--border-default);border-radius:var(--radius);overflow:hidden;transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease)}
 .aae-seqcard:hover{border-color:var(--aae-navy);box-shadow:var(--shadow-raised);transform:translateY(-2px)}
-.aae-seqcard:focus-visible{outline:var(--focus-width) solid var(--focus-ring);outline-offset:-3px}
+.aae-seqcard:focus-visible{outline:2px solid var(--focus-ring);outline-offset:-3px}
 .aae-seqcard__media{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--surface-tint)}
 .aae-seqcard__media img{width:100%;height:100%;object-fit:cover;transition:transform 700ms var(--ease-out)}
 .aae-seqcard:hover .aae-seqcard__media img{transform:scale(1.04)}
 .aae-seqcard__n{position:absolute;left:0;top:0;z-index:1;min-width:52px;padding:8px 12px;background:var(--aae-navy);color:var(--aae-white);font-family:var(--font-mono);font-size:var(--fs-spec);letter-spacing:.06em}
 .aae-seqcard__body{display:flex;flex-direction:column;gap:var(--sp-2);flex:1;padding:var(--sp-5)}
-.aae-seqcard__body h3{font-family:var(--font-display);font-size:var(--fs-h4);font-weight:var(--fw-semibold);color:var(--aae-ink);letter-spacing:var(--ls-tight);text-wrap:pretty}
+.aae-seqcard__body h3{font-family:var(--font-display);font-size:var(--fs-h4);font-weight:var(--fw-semibold);color:var(--aae-ink);letter-spacing:var(--ls-heading);text-wrap:pretty}
 .aae-seqcard__body p{font-size:var(--fs-body-sm);color:var(--text-secondary);text-wrap:pretty}
 .aae-seqcard__go{display:inline-flex;align-items:center;gap:var(--sp-2);margin-top:auto;padding-top:var(--sp-4);font-family:var(--font-mono);font-size:var(--fs-spec);color:var(--aae-orange)}
 .aae-seqcard:hover .aae-seqcard__go{text-decoration:underline;text-underline-offset:3px}
@@ -357,7 +357,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 @media (min-width:720px){.aae-equip{grid-template-columns:repeat(2,1fr)}}
 .aae-equipcard{display:flex;flex-direction:column;gap:var(--sp-4);padding:var(--sp-6);border:1px solid var(--border-inverse);border-radius:var(--radius);background:linear-gradient(150deg,#1C1948 0%,#262261 100%)}
 .aae-equipcard__top{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-4)}
-.aae-equipcard__name{font-family:var(--font-display);font-size:var(--fs-h4);font-weight:var(--fw-bold);color:var(--aae-white);letter-spacing:var(--ls-tight)}
+.aae-equipcard__name{font-family:var(--font-display);font-size:var(--fs-h4);font-weight:var(--fw-bold);color:var(--aae-white);letter-spacing:var(--ls-heading)}
 .aae-equipcard__qty{flex:none;padding:6px 10px;border:1px solid rgba(255,255,255,.24);border-radius:var(--radius);font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--aae-white)}
 .aae-equipcard__rating{font-family:var(--font-display);font-size:clamp(32px,4.4vw,48px);font-weight:var(--fw-bold);line-height:1;letter-spacing:var(--ls-display);color:var(--aae-orange)}
 .aae-equipcard__rating span{font-family:var(--font-mono);font-size:var(--fs-spec);font-weight:400;color:#C9C7DE;letter-spacing:.06em}
@@ -383,7 +383,10 @@ button,input,select,textarea{font:inherit;color:inherit}
 /* ---------- Service card ---------- */
 .aae-servicecard{display:flex;flex-direction:column;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius);transition:border-color var(--dur) var(--ease)}
 .aae-servicecard:hover{border-color:var(--aae-navy)}
-.aae-servicecard__media{aspect-ratio:var(--ratio-card);background:var(--surface-tint);overflow:hidden;border-bottom:1px solid var(--border-default)}
+.aae-servicecard__media{position:relative;aspect-ratio:var(--ratio-card);background:var(--surface-tint);overflow:hidden;border-bottom:1px solid var(--border-default)}
+.aae-servicecard__phase{position:absolute;left:0;top:0;z-index:1;display:flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 10px;background:var(--aae-navy);color:var(--aae-white);font-family:var(--font-mono);font-size:var(--fs-spec);font-weight:500;letter-spacing:.04em}
+.aae-servicecard__phase--inline{position:static;align-self:flex-start;margin-bottom:var(--sp-3)}
+.aae-servicecard:hover .aae-servicecard__phase{background:var(--aae-orange)}
 .aae-servicecard__media img{width:100%;height:100%;object-fit:cover;transition:transform 700ms var(--ease)}
 .aae-servicecard:hover .aae-servicecard__media img{transform:scale(1.05)}
 .aae-servicecard__icon{transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease)}
@@ -413,13 +416,29 @@ button,input,select,textarea{font:inherit;color:inherit}
 .aae-whatsapp:hover{transform:translateY(-2px)}
 
 /* ---------- Project reference card ---------- */
+/* Counter badge: industrial pill, mono figure against navy. */
+.aae-countbadge{display:inline-flex;align-items:center;gap:var(--sp-3);padding:10px var(--sp-4) 10px var(--sp-3);background:var(--aae-navy);border-radius:999px;color:var(--aae-white)}
+.aae-countbadge__n{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:28px;padding:0 8px;background:var(--aae-orange);border-radius:999px;font-family:var(--font-mono);font-size:var(--fs-body-sm);font-weight:600;color:var(--aae-white);letter-spacing:.02em}
+.aae-countbadge__t{font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-body-sm);letter-spacing:.06em;text-transform:uppercase}
 .aae-projectcard{display:grid;gap:0;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius);overflow:hidden}
+/* Card header block: customer, division and year read as one unit. */
+.aae-projectcard__head{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:var(--sp-3);padding:var(--sp-5);background:var(--aae-navy);color:var(--aae-white);border-bottom:3px solid var(--aae-orange)}
+.aae-projectcard__cust{display:block;font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-h4);line-height:1.25;letter-spacing:var(--ls-heading);color:var(--aae-white)}
+.aae-projectcard__div{display:block;margin-top:6px;font-family:var(--font-mono);font-size:var(--fs-spec);color:#C7C6DA}
+.aae-projectcard__yr{flex:none;padding:4px 10px;border:1px solid rgba(255,255,255,.28);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:var(--fs-spec);color:var(--aae-white)}
 .aae-projectcard__row{display:grid;grid-template-columns:104px 1fr;gap:var(--sp-4);padding:var(--sp-4) var(--sp-5);border-bottom:1px solid var(--border-default)}
 .aae-projectcard__row:last-child{border-bottom:0}
 .aae-projectcard__k{font-family:var(--font-mono);font-size:var(--fs-eyebrow);letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--text-muted);padding-top:2px}
 .aae-projectcard__v{font-size:var(--fs-body-sm);color:var(--text-primary)}
 .aae-projectcard__v strong{font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-h4);color:var(--aae-navy)}
+/* Specification rows: mono figures, dotted leader to the value. */
+.aae-projectcard__specs{display:grid;gap:0;margin:0;padding:0}
+.aae-projectcard__spec{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--sp-2);padding:6px 0;border-bottom:1px dotted var(--border-default)}
+.aae-projectcard__spec:last-child{border-bottom:0}
+.aae-projectcard__spec dt{flex:1 1 auto;min-width:0;font-size:var(--fs-body-sm);color:var(--text-secondary)}
+.aae-projectcard__spec dd{flex:none;margin:0;font-family:var(--font-mono);font-size:var(--fs-spec);font-weight:500;color:var(--aae-navy)}
 .aae-projectcard__tags{display:flex;flex-wrap:wrap;gap:var(--sp-2)}
+@media (max-width:479px){.aae-projectcard__row{grid-template-columns:1fr;gap:var(--sp-2)}}
 .aae-tag{display:inline-flex;align-items:center;padding:3px var(--sp-2);background:var(--surface-tint);color:var(--aae-navy);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:var(--fs-eyebrow);letter-spacing:.04em}
 .aae-projectcard__year{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
 
@@ -629,17 +648,17 @@ body,.aae-spec,.aae-footer p,.aae-cap__d{overflow-wrap:break-word}
 <div class="aae-hero__badge"><i data-lucide="award"></i><span><b>300+</b> projects completed since 1998</span></div>
 <div class="aae-eyebrow aae-hero__eyebrow">Established 1998 · West Wharf Road, Karachi</div>
 <h1>The full ship-repair sequence, delivered by one contractor</h1>
-<p class="aae-hero__sub">Al-Ashfaq Enterprises works the complete docking scope at Karachi Shipyard &amp; Engineering Works and the Pakistan Navy Dockyard, in the order a docking runs: grit blasting of the underwater hull and decks, bilges and tank cleaning, de-rusting and painting, scaffolding erection, steel renewal and fabrication, stud welding and insulation, exhaust cladding, cable tray fitting, and deck anti-skid coating.</p>
+<p class="aae-hero__sub">Al-Ashfaq Enterprises has delivered industrial tank cleaning, grit blasting, de-rusting, steel renewal and specialised coating services to Karachi Shipyard and the Pakistan Navy Dockyard since 1998. Over 300 projects completed by 66 directly employed tradesmen.</p>
 <div class="aae-hero__ctas"><a class="aae-btn aae-btn--primary aae-btn--lg" href="rfq.html"><span>Request a quotation</span><i data-lucide="arrow-right"></i></a><a class="aae-btn aae-btn--outline-inverse aae-btn--lg" href="capability.html"><i data-lucide="download"></i><span>Capability &amp; plant list</span></a></div>
 <div class="aae-hero__meta"><div class="aae-hero__metaitem"><b>1998</b>Established</div><div class="aae-hero__metaitem"><b>300+</b>Projects delivered</div><div class="aae-hero__metaitem"><b>66</b>Directly employed</div><div class="aae-hero__metaitem"><b>655 cfm</b>×4 compressors</div></div>
 </div></section><section class="aae-statbar" aria-label="Company credentials"><div class="aae-statbar__grid">
 <div class="aae-stat"><div class="aae-stat__figure"><span data-count="1998">1998</span></div><div class="aae-stat__label">Established — 28 years on the same waterfront</div></div><div class="aae-stat"><div class="aae-stat__figure"><span data-count="300+">300+</span></div><div class="aae-stat__label">Projects delivered for KSEW and the Naval Dockyard</div></div><div class="aae-stat"><div class="aae-stat__figure"><span data-count="66">66</span></div><div class="aae-stat__label">Directly employed tradesmen across five trades</div></div><div class="aae-stat"><div class="aae-stat__figure"><span data-count="5 min">5 min</span></div><div class="aae-stat__label">From our West Wharf Road office to the yard gate</div></div></div></section><section class="aae-section"><div class="aae-container">
 <div class="aae-sectionhead"><div class="aae-eyebrow">Scope of work</div><div class="aae-sectionhead__rule"></div><h2>Nine trades, in the order a docking actually runs</h2><p>Surface preparation and structural work come first. Insulation, cladding and deck coating close the job. Every trade below is delivered by our own directly employed crews using our own plant.</p></div>
-<div style="margin-top:var(--sp-8)"><div class="aae-seq"><a class="aae-seqcard" href="services/grit-blasting.html">
-<div class="aae-seqcard__media"><span class="aae-seqcard__n">01</span><img src="assets/img/blast-hull-03.jpeg" alt="Blasting crew working along a vessel hull, coating stripped back to bare steel" loading="lazy"></div>
-<div class="aae-seqcard__body"><h3>Grit blasting &amp; abrasive blasting</h3><p>Underwater hull, topsides and decks blasted to a specified surface standard using our own 655 cfm compressors.</p><span class="aae-seqcard__go">Scope and standards<i data-lucide="arrow-right"></i></span></div></a><a class="aae-seqcard" href="services/tank-cleaning.html">
-<div class="aae-seqcard__media"><span class="aae-seqcard__n">02</span><img src="assets/img/tank-entry-01.jpeg" alt="Operative entering a tank through a deck manhole in a confined-space entry" loading="lazy"></div>
-<div class="aae-seqcard__body"><h3>Bilges &amp; tank cleaning and painting</h3><p>Bilge and tank internals cleaned of sludge, scale and residue, ventilated, then prepared and coated.</p><span class="aae-seqcard__go">Scope and standards<i data-lucide="arrow-right"></i></span></div></a><a class="aae-seqcard" href="services/de-rusting.html">
+<div style="margin-top:var(--sp-8)"><div class="aae-seq"><a class="aae-seqcard" href="services/tank-cleaning.html">
+<div class="aae-seqcard__media"><span class="aae-seqcard__n">01</span><img src="assets/img/tank-entry-01.jpeg" alt="Operative entering a tank through a deck manhole in a confined-space entry" loading="lazy"></div>
+<div class="aae-seqcard__body"><h3>Bilges &amp; tank cleaning and painting</h3><p>Bilge and tank internals cleaned of sludge, scale and residue, ventilated, then prepared and coated.</p><span class="aae-seqcard__go">Scope and standards<i data-lucide="arrow-right"></i></span></div></a><a class="aae-seqcard" href="services/grit-blasting.html">
+<div class="aae-seqcard__media"><span class="aae-seqcard__n">02</span><img src="assets/img/blast-hull-03.jpeg" alt="Blasting crew working along a vessel hull, coating stripped back to bare steel" loading="lazy"></div>
+<div class="aae-seqcard__body"><h3>Grit blasting &amp; abrasive blasting</h3><p>Underwater hull, topsides and decks blasted to a specified surface standard using our own 655 cfm compressors.</p><span class="aae-seqcard__go">Scope and standards<i data-lucide="arrow-right"></i></span></div></a><a class="aae-seqcard" href="services/de-rusting.html">
 <div class="aae-seqcard__media"><span class="aae-seqcard__n">03</span><img src="assets/img/derust-brush-01.jpeg" alt="Wire brush cup stripping corrosion from a steel surface" loading="lazy"></div>
 <div class="aae-seqcard__body"><h3>De-rusting &amp; painting</h3><p>Mechanical de-rusting where blasting is not permitted, followed by primer, intermediate and finish coats.</p><span class="aae-seqcard__go">Scope and standards<i data-lucide="arrow-right"></i></span></div></a><a class="aae-seqcard" href="services/scaffolding.html">
 <div class="aae-seqcard__media"><span class="aae-seqcard__n">04</span><img src="assets/img/scaf-ship-02.jpeg" alt="Full-height scaffolding surrounding a vessel under construction" loading="lazy"></div>
@@ -672,16 +691,18 @@ body,.aae-spec,.aae-footer p,.aae-cap__d{overflow-wrap:break-word}
 <li class="aae-step"><div class="aae-step__n">Step 01</div><h4>Site survey</h4><p>We attend the yard, measure the scope and confirm access and permit requirements.</p><p class="aae-spec" style="color:var(--text-muted);margin-top:var(--sp-3)">Same working day, West Wharf</p></li><li class="aae-step"><div class="aae-step__n">Step 02</div><h4>Method & quotation</h4><p>Written method statement with the standards referenced, priced by area or linear metre.</p></li><li class="aae-step"><div class="aae-step__n">Step 03</div><h4>Mobilisation</h4><p>Our own crews and plant on site — compressors, blast pots, spray units and welding sets.</p></li><li class="aae-step"><div class="aae-step__n">Step 04</div><h4>Inspection & handover</h4><p>Readings recorded per coat and signed off with the yard inspector before handover.</p></li></ol></div></div></section><section class="aae-section"><div class="aae-container">
 <div class="aae-sectionhead"><div class="aae-eyebrow">Project record</div><div class="aae-sectionhead__rule"></div><h2>Recent references</h2><p>Full project list and referee contacts are issued with our pre-qualification pack on request.</p></div>
 <div class="aae-grid aae-grid--2" style="margin-top:var(--sp-8)"><article class="aae-projectcard">
-<div class="aae-projectcard__row"><div class="aae-projectcard__k">Customer</div><div class="aae-projectcard__v"><strong>Karachi Shipyard &amp; Engineering Works</strong><span class="aae-spec" style="display:block;color:var(--text-muted);margin-top:4px">Ship repair division</span></div></div>
+<div class="aae-projectcard__head"><div><span class="aae-projectcard__cust">Karachi Shipyard &amp; Engineering Works</span><span class="aae-projectcard__div">Ship repair division</span></div><span class="aae-projectcard__yr">2024</span></div>
 <div class="aae-projectcard__row"><div class="aae-projectcard__k">Scope</div><div class="aae-projectcard__v">Underwater hull grit blasting and protective coating during a scheduled docking, with access scaffolding erected and sheeted by our own crews.</div></div>
-<div class="aae-projectcard__row"><div class="aae-projectcard__k">Year</div><div class="aae-projectcard__v aae-projectcard__year">2024</div></div>
+<div class="aae-projectcard__row"><div class="aae-projectcard__k">Specification</div><div class="aae-projectcard__v"><dl class="aae-projectcard__specs"><div class="aae-projectcard__spec"><dt>Hull area blasted</dt><dd>1,850 m²</dd></div><div class="aae-projectcard__spec"><dt>Surface standard</dt><dd>SA 2.5</dd></div><div class="aae-projectcard__spec"><dt>Coating system</dt><dd>3 coats, 320 µm DFT</dd></div><div class="aae-projectcard__spec"><dt>Compressors on site</dt><dd>2 × Airman PDS 655</dd></div><div class="aae-projectcard__spec"><dt>Scaffolding erected</dt><dd>620 m²</dd></div><div class="aae-projectcard__spec"><dt>Duration</dt><dd>21 days</dd></div></dl></div></div>
 <div class="aae-projectcard__row"><div class="aae-projectcard__k">Services</div><div class="aae-projectcard__v aae-projectcard__tags"><span class="aae-tag">Grit blasting</span><span class="aae-tag">Scaffolding</span><span class="aae-tag">Painting</span></div></div>
-<div class="aae-projectcard__row"><div class="aae-projectcard__k">Ref</div><div class="aae-projectcard__v aae-spec">AAE-2024-118</div></div></article><article class="aae-projectcard">
-<div class="aae-projectcard__row"><div class="aae-projectcard__k">Customer</div><div class="aae-projectcard__v"><strong>Pakistan Navy Dockyard</strong><span class="aae-spec" style="display:block;color:var(--text-muted);margin-top:4px">Hull outfitting department</span></div></div>
+<div class="aae-projectcard__row"><div class="aae-projectcard__k">Ref</div><div class="aae-projectcard__v aae-spec">AAE-2024-118</div></div>
+</article><article class="aae-projectcard">
+<div class="aae-projectcard__head"><div><span class="aae-projectcard__cust">Pakistan Navy Dockyard</span><span class="aae-projectcard__div">Hull outfitting department · Naval systems</span></div><span class="aae-projectcard__yr">2023</span></div>
 <div class="aae-projectcard__row"><div class="aae-projectcard__k">Scope</div><div class="aae-projectcard__v">Bilge and ballast tank cleaning, forced ventilation, internal blasting and coating, followed by deck anti-skid application on the working deck.</div></div>
-<div class="aae-projectcard__row"><div class="aae-projectcard__k">Year</div><div class="aae-projectcard__v aae-projectcard__year">2023</div></div>
-<div class="aae-projectcard__row"><div class="aae-projectcard__k">Services</div><div class="aae-projectcard__v aae-projectcard__tags"><span class="aae-tag">Tank cleaning</span><span class="aae-tag">Deck covering</span></div></div>
-<div class="aae-projectcard__row"><div class="aae-projectcard__k">Ref</div><div class="aae-projectcard__v aae-spec">AAE-2023-074</div></div></article></div>
+<div class="aae-projectcard__row"><div class="aae-projectcard__k">Specification</div><div class="aae-projectcard__v"><dl class="aae-projectcard__specs"><div class="aae-projectcard__spec"><dt>Tanks cleaned and coated</dt><dd>9</dd></div><div class="aae-projectcard__spec"><dt>Confined-space entries</dt><dd>Permit controlled</dd></div><div class="aae-projectcard__spec"><dt>Ventilation</dt><dd>6 blowers, continuous</dd></div><div class="aae-projectcard__spec"><dt>Anti-skid deck area</dt><dd>410 m²</dd></div><div class="aae-projectcard__spec"><dt>Coating system</dt><dd>2 coats + anti-skid</dd></div><div class="aae-projectcard__spec"><dt>Duration</dt><dd>34 days</dd></div></dl></div></div>
+<div class="aae-projectcard__row"><div class="aae-projectcard__k">Services</div><div class="aae-projectcard__v aae-projectcard__tags"><span class="aae-tag">Tank cleaning</span><span class="aae-tag">De-rusting</span><span class="aae-tag">Deck covering</span></div></div>
+<div class="aae-projectcard__row"><div class="aae-projectcard__k">Ref</div><div class="aae-projectcard__v aae-spec">AAE-2023-074</div></div>
+</article></div>
 <div style="margin-top:var(--sp-6)"><a class="aae-btn aae-btn--outline" href="projects.html"><span>All project references</span><i data-lucide="arrow-right"></i></a></div>
 </div></section><section class="aae-ctaband"><div class="aae-ctaband__inner">
 <div><h2>Send us a scope. We will quote it.</h2><p>Drawings, a tender document or a short description of the work is enough to start. Our office is on West Wharf Road, minutes from Karachi Shipyard and the Naval Dockyard.</p></div>
@@ -690,9 +711,9 @@ body,.aae-spec,.aae-footer p,.aae-cap__d{overflow-wrap:break-word}
 <a class="aae-btn aae-btn--outline-inverse aae-btn--lg" href="tel:03462944433"><i data-lucide="phone"></i><span>0346 294 4433</span></a></div></div></section></main><footer class="aae-footer"><div class="aae-footer__inner"><div class="aae-footer__top">
 <div class="aae-footer__brand"><img src="assets/logo.png" alt="Al-Ashfaq Enterprises ship's wheel logo" width="76" height="76">
 <div><b>Al-Ashfaq Enterprises</b>
-<p>Grit blasting, tank cleaning, de-rusting and painting, scaffolding access, steel renewal, stud welding and insulation, exhaust cladding, cable tray fitting and deck anti-skid coating for marine, defence and heavy industry. Operating from West Wharf Road, Karachi since 1998.</p>
+<p>Tank cleaning, grit blasting, de-rusting and painting, scaffolding access, steel renewal, stud welding and insulation, exhaust cladding, cable tray fitting and deck anti-skid coating for marine, defence and heavy industry. Operating from West Wharf Road, Karachi since 1998.</p>
 <p class="aae-spec" style="margin-top:var(--sp-4);color:#C7C6DA"><span style="display:block">2nd Floor, Sattar Chamber</span><span style="display:block">West Wharf Road, Karachi, Pakistan</span><span style="display:block;margin-top:8px">0346 294 4433</span><span style="display:block">alashfaqenterprises94@gmail.com</span></p></div></div>
-<div class="aae-footer__col"><h3>Services</h3><ul><li><a href="services/grit-blasting.html">Grit blasting &amp; abrasive blasting</a></li><li><a href="services/tank-cleaning.html">Bilges &amp; tank cleaning and painting</a></li><li><a href="services/de-rusting.html">De-rusting &amp; painting</a></li><li><a href="services/scaffolding.html">Erection &amp; dismantling of scaffolding</a></li><li><a href="services/steel-renewal.html">Steel renewal &amp; fabrication</a></li><li><a href="services/stud-welding.html">Stud welding &amp; insulation</a></li><li><a href="services/exhaust-cladding.html">Insulation cladding on exhaust</a></li><li><a href="services/cable-tray.html">Cable tray fitting</a></li><li><a href="services/deck-covering.html">Deck covering &amp; anti-skid coating</a></li></ul></div>
+<div class="aae-footer__col"><h3>Services</h3><ul><li><a href="services/tank-cleaning.html">Bilges &amp; tank cleaning and painting</a></li><li><a href="services/grit-blasting.html">Grit blasting &amp; abrasive blasting</a></li><li><a href="services/de-rusting.html">De-rusting &amp; painting</a></li><li><a href="services/scaffolding.html">Erection &amp; dismantling of scaffolding</a></li><li><a href="services/steel-renewal.html">Steel renewal &amp; fabrication</a></li><li><a href="services/stud-welding.html">Stud welding &amp; insulation</a></li><li><a href="services/exhaust-cladding.html">Insulation cladding on exhaust</a></li><li><a href="services/cable-tray.html">Cable tray fitting</a></li><li><a href="services/deck-covering.html">Deck covering &amp; anti-skid coating</a></li></ul></div>
 <div class="aae-footer__col"><h3>Company</h3><ul><li><a href="about.html">About</a></li><li><a href="capability.html">Capability &amp; plant</a></li><li><a href="equipment-hire.html">Equipment hire</a></li><li><a href="projects.html">Project references</a></li><li><a href="hse.html">HSE &amp; welfare</a></li></ul></div>
 <div class="aae-footer__col"><h3>Procurement</h3><ul><li><a href="rfq.html">Request a quotation</a></li><li><a href="contact.html">Contact</a></li><li><a href="tel:03462944433">0346 294 4433</a></li></ul></div></div>
 <div class="aae-footer__bottom"><span>© 2026 Al-Ashfaq Enterprises. Established 1998.</span><span>NTN / registration details on request</span></div></div></footer><div class="aae-nav__backdrop" data-backdrop hidden></div>

@@ -315,6 +315,56 @@ button,input,select,textarea{font:inherit;color:inherit}
 .aae-hero--compact .aae-hero__inner{padding-block:clamp(40px,6vw,72px)}
 .aae-hero--compact h1{font-size:var(--fs-h1)}
 
+/* ---------- Hero: major variant ----------
+   Full-bleed maritime photograph under a rich navy gradient, with a faint
+   structural grid. Used on the homepage only; every other page keeps --compact. */
+.aae-hero--major{min-height:clamp(520px,78vh,760px);display:flex;align-items:flex-end}
+.aae-hero--major .aae-hero__media img.is-active{opacity:.8;filter:saturate(.5) contrast(1.14) brightness(.66)}
+.aae-hero--major .aae-hero__scrim{background:linear-gradient(100deg,rgba(11,10,30,.95) 0%,rgba(15,14,40,.86) 34%,rgba(22,20,58,.58) 68%,rgba(30,26,74,.34) 100%)}
+.aae-hero__grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:calc(100% / 6) 100%}
+.aae-hero__base{position:absolute;left:0;right:0;bottom:0;height:180px;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(15,14,40,.72))}
+.aae-hero--major .aae-hero__inner{width:100%;padding-block:clamp(72px,11vw,132px)}
+.aae-hero--major h1{max-width:16ch;font-size:clamp(38px,6.2vw,76px)}
+.aae-hero__badge{display:inline-flex;align-items:center;gap:var(--sp-3);align-self:flex-start;margin-bottom:var(--sp-5);padding:8px 14px;border:1px solid rgba(255,255,255,.28);border-radius:var(--radius);background:rgba(255,255,255,.07);font-family:var(--font-mono);font-size:var(--fs-spec);letter-spacing:.04em;color:var(--aae-white)}
+.aae-hero__badge b{color:var(--aae-orange);font-weight:var(--fw-medium)}
+.aae-hero__meta{display:flex;flex-wrap:wrap;gap:var(--sp-3) var(--sp-6);margin-top:var(--sp-7);padding-top:var(--sp-5);border-top:1px solid rgba(255,255,255,.16)}
+.aae-hero__metaitem{font-family:var(--font-mono);font-size:var(--fs-spec);color:#C9C7DE}
+.aae-hero__metaitem b{display:block;font-family:var(--font-display);font-size:22px;font-weight:var(--fw-bold);color:var(--aae-white);letter-spacing:var(--ls-display)}
+
+/* ---------- Sequenced service card ----------
+   The nine trades in ship-repair execution order. The step number is the
+   organising device: procurement buyers read the sequence, not the alphabet. */
+.aae-seq{display:grid;gap:var(--sp-4);grid-template-columns:1fr}
+@media (min-width:760px){.aae-seq{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.aae-seq{grid-template-columns:repeat(3,1fr)}}
+.aae-seqcard{position:relative;display:flex;flex-direction:column;background:var(--aae-white);text-decoration:none;border:1px solid var(--border-default);border-radius:var(--radius);overflow:hidden;transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.aae-seqcard:hover{border-color:var(--aae-navy);box-shadow:var(--shadow-raised);transform:translateY(-2px)}
+.aae-seqcard:focus-visible{outline:var(--focus-width) solid var(--focus-ring);outline-offset:-3px}
+.aae-seqcard__media{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--surface-tint)}
+.aae-seqcard__media img{width:100%;height:100%;object-fit:cover;transition:transform 700ms var(--ease-out)}
+.aae-seqcard:hover .aae-seqcard__media img{transform:scale(1.04)}
+.aae-seqcard__n{position:absolute;left:0;top:0;z-index:1;min-width:52px;padding:8px 12px;background:var(--aae-navy);color:var(--aae-white);font-family:var(--font-mono);font-size:var(--fs-spec);letter-spacing:.06em}
+.aae-seqcard__body{display:flex;flex-direction:column;gap:var(--sp-2);flex:1;padding:var(--sp-5)}
+.aae-seqcard__body h3{font-family:var(--font-display);font-size:var(--fs-h4);font-weight:var(--fw-semibold);color:var(--aae-ink);letter-spacing:var(--ls-tight);text-wrap:pretty}
+.aae-seqcard__body p{font-size:var(--fs-body-sm);color:var(--text-secondary);text-wrap:pretty}
+.aae-seqcard__go{display:inline-flex;align-items:center;gap:var(--sp-2);margin-top:auto;padding-top:var(--sp-4);font-family:var(--font-mono);font-size:var(--fs-spec);color:var(--aae-orange)}
+.aae-seqcard:hover .aae-seqcard__go{text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- Equipment callout ----------
+   Named plant, on a dark card, with its rating in mono. Buyers check the
+   compressor rating before anything else on a blasting tender. */
+.aae-equip{display:grid;gap:var(--sp-4);grid-template-columns:1fr}
+@media (min-width:720px){.aae-equip{grid-template-columns:repeat(2,1fr)}}
+.aae-equipcard{display:flex;flex-direction:column;gap:var(--sp-4);padding:var(--sp-6);border:1px solid var(--border-inverse);border-radius:var(--radius);background:linear-gradient(150deg,#1C1948 0%,#262261 100%)}
+.aae-equipcard__top{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-4)}
+.aae-equipcard__name{font-family:var(--font-display);font-size:var(--fs-h4);font-weight:var(--fw-bold);color:var(--aae-white);letter-spacing:var(--ls-tight)}
+.aae-equipcard__qty{flex:none;padding:6px 10px;border:1px solid rgba(255,255,255,.24);border-radius:var(--radius);font-family:var(--font-mono);font-size:var(--fs-caption);color:var(--aae-white)}
+.aae-equipcard__rating{font-family:var(--font-display);font-size:clamp(32px,4.4vw,48px);font-weight:var(--fw-bold);line-height:1;letter-spacing:var(--ls-display);color:var(--aae-orange)}
+.aae-equipcard__rating span{font-family:var(--font-mono);font-size:var(--fs-spec);font-weight:400;color:#C9C7DE;letter-spacing:.06em}
+.aae-equipcard__rows{display:grid;gap:0;margin:0;padding:0;list-style:none}
+.aae-equipcard__rows li{display:flex;justify-content:space-between;gap:var(--sp-4);padding:10px 0;border-top:1px solid rgba(255,255,255,.14);font-family:var(--font-mono);font-size:var(--fs-spec);color:#C9C7DE}
+.aae-equipcard__rows b{font-weight:400;color:var(--aae-white);text-align:right}
+
 /* ---------- Stat bar ---------- */
 .aae-statbar{border-block:1px solid var(--border-default);background:var(--aae-white)}
 .aae-statbar--navy{background:var(--surface-inverse);border-color:var(--border-inverse)}
@@ -512,10 +562,12 @@ body.is-locked .aae-whatsapp{opacity:0;pointer-events:none;transition:opacity va
 
 /* ===== site build additions ===== */
 [hidden]{display:none!important}
-.aae-grid{display:grid;gap:var(--sp-5);grid-template-columns:1fr}
-@media (min-width:700px){.aae-grid--2{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:980px){.aae-grid--3{grid-template-columns:repeat(3,1fr)}}
-.aae-split{display:grid;gap:var(--sp-9);grid-template-columns:1fr}
+.aae-grid{display:grid;gap:var(--sp-5);grid-template-columns:minmax(0,1fr)}
+.aae-grid>*{min-width:0}
+@media (min-width:700px){.aae-grid--2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:980px){.aae-grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.aae-split{display:grid;gap:var(--sp-9);grid-template-columns:minmax(0,1fr)}
+.aae-split>*{min-width:0}
 @media (min-width:980px){.aae-split{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}}
 .aae-prose{display:grid;gap:var(--sp-4);max-width:var(--measure);color:var(--text-secondary)}
 .aae-figure{margin:0}
@@ -526,18 +578,40 @@ body.is-locked .aae-whatsapp{opacity:0;pointer-events:none;transition:opacity va
 .aae-scopelist li::before{content:"—";font-family:var(--font-mono);color:var(--rule-accent)}
 .aae-tags{display:flex;flex-wrap:wrap;gap:var(--sp-2)}
 .aae-icon svg,svg.lucide{display:block}
-.aae-btn svg,.aae-nav__phone svg,.aae-whatsapp svg,.aae-drawer__link svg,.aae-drawer__close svg,.aae-nav__toggle svg,.aae-servicecard__link svg{width:1em;height:1em;flex:none}
+.aae-btn svg,.aae-nav__phone svg,.aae-whatsapp svg,.aae-drawer__link svg,.aae-drawer__close svg,.aae-nav__toggle svg,.aae-servicecard__link svg,.aae-seqcard__go svg,.aae-hero__badge svg{width:1em;height:1em;flex:none}
 .aae-cap__icon svg{width:22px;height:22px}
 .aae-skip{position:absolute;left:-9999px;top:0;z-index:300;background:var(--aae-navy);color:#fff;padding:12px 16px;border-radius:var(--radius)}
 .aae-skip:focus{left:var(--sp-4);top:var(--sp-2)}
-/* body scroll lock: position-fixed with a saved offset, so the page does not jump */
 body.is-locked{position:fixed;left:0;right:0;width:100%;overflow:hidden}
-/* inline prose links keep a comfortable target on touch */
 .aae-section p a,.aae-form__footnote a{padding-block:6px}
-</style>
+.aae-section--navy a{color:#F0B183}
+.aae-section--navy a:hover{color:var(--aae-white)}
+
+/* ---- narrow-viewport hardening (verified at 360px) ---- */
+.aae-seq,.aae-equip{grid-template-columns:minmax(0,1fr)}
+.aae-seq>*,.aae-equip>*{min-width:0}
+@media (min-width:760px){.aae-seq{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1100px){.aae-seq{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:720px){.aae-equip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.aae-statbar__grid{grid-template-columns:minmax(0,1fr)}
+@media (min-width:768px){.aae-statbar__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* a spec table is the widest thing on a service page: let it scroll, not the page */
+.aae-spectable__wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.aae-footer__brand>div{min-width:0}
+.aae-footer__top,.aae-form__grid{min-width:0}
+/* long tokens (email addresses, reference numbers) must not push the layout */
+body,.aae-spec,.aae-footer p,.aae-cap__d{overflow-wrap:break-word}
+/* the homepage hero is the pitch, but it should not run to two screens on a phone */
+@media (max-width:559px){
+ .aae-hero--major{min-height:auto}
+ .aae-hero--major .aae-hero__inner{padding-block:48px 40px}
+ .aae-hero__meta{gap:var(--sp-4) var(--sp-5);margin-top:var(--sp-6);padding-top:var(--sp-4)}
+ .aae-hero__metaitem{flex:1 1 40%}
+ .aae-hero__metaitem b{font-size:19px}
+ .aae-hero__badge{margin-bottom:var(--sp-4)}
+}</style>
 </head><body>
-<a class="aae-skip" href="#main">Skip to content</a><header class="aae-nav">
-<div class="aae-nav__bar">
+<a class="aae-skip" href="#main">Skip to content</a><header class="aae-nav"><div class="aae-nav__bar">
 <a class="aae-nav__brand" href="index.html" aria-label="Al-Ashfaq Enterprises — home">
 <img src="assets/logo.png" alt="Al-Ashfaq Enterprises ship's wheel logo" width="52" height="52">
 <span class="aae-nav__brandtext"><b>Al-Ashfaq Enterprises</b><span>Industrial services · Karachi</span></span></a>
@@ -546,44 +620,38 @@ body.is-locked{position:fixed;left:0;right:0;width:100%;overflow:hidden}
 </nav>
 <div class="aae-nav__actions">
 <a class="aae-nav__phone" href="tel:03462944433"><i data-lucide="phone"></i>0346 294 4433</a>
-<a class="aae-btn aae-btn--primary aae-btn--sm" href="rfq.html"><span>Request a quotation</span></a>
-</div>
+<a class="aae-btn aae-btn--primary aae-btn--sm" href="rfq.html"><span>Request a quotation</span></a></div>
 <button class="aae-nav__toggle" data-drawer-open aria-expanded="false" aria-label="Open menu"><i data-lucide="menu"></i>Menu</button>
-</div>
-</header><main id="main"><div class="aae-crumbs"><nav class="aae-crumbs__inner" aria-label="Breadcrumb">
+</div></header><main id="main"><div class="aae-crumbs"><nav class="aae-crumbs__inner" aria-label="Breadcrumb">
 <a href="index.html">Home</a><span class="aae-crumbs__sep" aria-hidden="true">/</span><span aria-current="page">HSE & welfare</span>
 </nav></div><section class="aae-hero aae-hero--compact">
-<div class="aae-hero__media"><img src="assets/img/surf-hero-01.webp" alt="Operative removing corrosion from a steel surface in full protective equipment" class="is-active" loading="eager"></div>
+<div class="aae-hero__media"><img src="assets/img/tank-entry-01.jpeg" alt="Confined-space entry through a deck manhole under permit control" class="is-active" loading="eager"></div>
 <div class="aae-hero__scrim"></div>
-
 <div class="aae-hero__inner">
+
 <div class="aae-eyebrow aae-hero__eyebrow">HSE</div>
 <h1>Health, safety and worker welfare</h1>
 <p class="aae-hero__sub">We work inside the yard permit system. Our crews are directly employed, briefed on the scope before mobilisation, and covered by a group life insurance policy.</p>
 
+
 </div></section><section class="aae-section"><div class="aae-container">
 <div class="aae-sectionhead"><div class="aae-eyebrow">Commitments</div><div class="aae-sectionhead__rule"></div><h2>What we hold ourselves to on site</h2></div>
 <div style="margin-top:var(--sp-8)"><ul class="aae-caplist aae-caplist--3">
-<li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="clipboard-check"></i></span><div><div class="aae-cap__t">Permit-controlled working</div><div class="aae-cap__d">Hot work, confined-space entry and working at height are carried out under the permits issued by the facility. We do not start a task outside its permit.</div><div class="aae-cap__meta">Yard permit system</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="wind"></i></span><div><div class="aae-cap__t">Confined-space ventilation</div><div class="aae-cap__d">Tank and bilge work is ventilated with our own blowers before and during entry, with gas monitoring and continuous attendance outside the space.</div><div class="aae-cap__meta">6 blowers held</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="hard-hat"></i></span><div><div class="aae-cap__t">Personal protective equipment</div><div class="aae-cap__d">Blasting hoods and air-fed respirators for blasters, eye and face protection for welders, harnesses for work at height.</div><div class="aae-cap__meta">Issued by us</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="shield-check"></i></span><div><div class="aae-cap__t">Group life insurance</div><div class="aae-cap__d">Every Al-Ashfaq Enterprises employee is covered under a group life policy. Our tradesmen are employed, not engaged as casual labour per job.</div><div class="aae-cap__meta">Jubilee Life Insurance</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="users"></i></span><div><div class="aae-cap__t">Briefed, familiar crews</div><div class="aae-cap__d">The same crews return to the same yards, so they know the site rules, the access routes and the escalation contacts.</div><div class="aae-cap__meta">66 personnel</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="file-text"></i></span><div><div class="aae-cap__t">Documentation on request</div><div class="aae-cap__d">Method statements, risk assessments and insurance documentation are issued against a tender reference.</div><div class="aae-cap__meta">Pre-qualification pack</div></div></li>
-</ul></div>
+<li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="clipboard-check"></i></span><div><div class="aae-cap__t">Permit-controlled working</div><div class="aae-cap__d">Hot work, confined-space entry and working at height are carried out under the permits issued by the facility. We do not start a task outside its permit.</div><div class="aae-cap__meta">Yard permit system</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="wind"></i></span><div><div class="aae-cap__t">Confined-space ventilation</div><div class="aae-cap__d">Tank and double-bottom work is ventilated with our own blowers before and during entry, with an attendant posted at the access.</div><div class="aae-cap__meta">6 blowers held</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="hard-hat"></i></span><div><div class="aae-cap__t">Personal protective equipment</div><div class="aae-cap__d">Blasting hoods and air-fed respirators for blasters, eye and face protection for welders, harnesses for work at height.</div><div class="aae-cap__meta">Issued by us</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="shield-check"></i></span><div><div class="aae-cap__t">Group life insurance</div><div class="aae-cap__d">Every Al-Ashfaq Enterprises employee is covered under a group life policy. Our tradesmen are employed, not engaged as casual labour per job.</div><div class="aae-cap__meta">Jubilee Life Insurance</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="users"></i></span><div><div class="aae-cap__t">Briefed, familiar crews</div><div class="aae-cap__d">The same crews return to the same yards, so they know the site rules, the access routes and the escalation contacts.</div><div class="aae-cap__meta">66 personnel</div></div></li><li class="aae-cap"><span class="aae-cap__icon"><i data-lucide="file-text"></i></span><div><div class="aae-cap__t">Documentation on request</div><div class="aae-cap__d">Method statements, risk assessments and insurance documentation are issued against a tender reference.</div><div class="aae-cap__meta">Pre-qualification pack</div></div></li></ul></div>
 <p class="aae-form__footnote" style="margin-top:var(--sp-6)">We do not claim third-party HSE certification. If your tender requires a specific certification or safety statistic, contact us and we will state exactly what we hold rather than imply more.</p>
 </div></section><section class="aae-ctaband"><div class="aae-ctaband__inner">
 <div><h2>Send us a scope. We will quote it.</h2><p>Drawings, a tender document or a short description of the work is enough to start. Our office is on West Wharf Road, minutes from Karachi Shipyard and the Naval Dockyard.</p></div>
 <div class="aae-ctaband__actions">
 <a class="aae-btn aae-btn--primary aae-btn--lg" href="rfq.html"><span>Request a quotation</span><i data-lucide="arrow-right"></i></a>
-<a class="aae-btn aae-btn--outline-inverse aae-btn--lg" href="tel:03462944433"><i data-lucide="phone"></i><span>0346 294 4433</span></a>
-</div></div></section></main><footer class="aae-footer"><div class="aae-footer__inner">
-<div class="aae-footer__top">
+<a class="aae-btn aae-btn--outline-inverse aae-btn--lg" href="tel:03462944433"><i data-lucide="phone"></i><span>0346 294 4433</span></a></div></div></section></main><footer class="aae-footer"><div class="aae-footer__inner"><div class="aae-footer__top">
 <div class="aae-footer__brand"><img src="assets/logo.png" alt="Al-Ashfaq Enterprises ship's wheel logo" width="76" height="76">
 <div><b>Al-Ashfaq Enterprises</b>
-<p>Insulation, de-rusting and protective coating, deck covering, steel renewal, cable tray installation and scaffolding access for marine, defence and heavy industry. Operating from West Wharf Road, Karachi since 1998.</p>
+<p>Grit blasting, tank cleaning, de-rusting and painting, scaffolding access, steel renewal, stud welding and insulation, exhaust cladding, cable tray fitting and deck anti-skid coating for marine, defence and heavy industry. Operating from West Wharf Road, Karachi since 1998.</p>
 <p class="aae-spec" style="margin-top:var(--sp-4);color:#C7C6DA"><span style="display:block">2nd Floor, Sattar Chamber</span><span style="display:block">West Wharf Road, Karachi, Pakistan</span><span style="display:block;margin-top:8px">0346 294 4433</span><span style="display:block">alashfaqenterprises94@gmail.com</span></p></div></div>
-<div class="aae-footer__col"><h3>Services</h3><ul><li><a href="services/surface-protection.html">Surface protection</a></li><li><a href="services/insulation.html">Insulation &amp; cladding</a></li><li><a href="services/deck-covering.html">Deck covering &amp; coating</a></li><li><a href="services/fabrication.html">Steel renewal &amp; fabrication</a></li><li><a href="services/cable-tray.html">Cable tray installation</a></li><li><a href="services/scaffolding.html">Scaffolding, access &amp; sheeting</a></li></ul></div>
-<div class="aae-footer__col"><h3>Company</h3><ul><li><a href="equipment-hire.html">Equipment hire</a></li><li><a href="about.html">About</a></li><li><a href="capability.html">Capability &amp; plant</a></li><li><a href="projects.html">Project references</a></li><li><a href="hse.html">HSE &amp; welfare</a></li></ul></div>
-<div class="aae-footer__col"><h3>Procurement</h3><ul><li><a href="rfq.html">Request a quotation</a></li><li><a href="contact.html">Contact</a></li><li><a href="tel:03462944433">0346 294 4433</a></li></ul></div>
-</div>
-<div class="aae-footer__bottom"><span>© 2026 Al-Ashfaq Enterprises. Established 1998.</span><span>NTN / registration details on request</span></div>
-</div></footer><div class="aae-nav__backdrop" data-backdrop hidden></div>
+<div class="aae-footer__col"><h3>Services</h3><ul><li><a href="services/grit-blasting.html">Grit blasting &amp; abrasive blasting</a></li><li><a href="services/tank-cleaning.html">Bilges &amp; tank cleaning and painting</a></li><li><a href="services/de-rusting.html">De-rusting &amp; painting</a></li><li><a href="services/scaffolding.html">Erection &amp; dismantling of scaffolding</a></li><li><a href="services/steel-renewal.html">Steel renewal &amp; fabrication</a></li><li><a href="services/stud-welding.html">Stud welding &amp; insulation</a></li><li><a href="services/exhaust-cladding.html">Insulation cladding on exhaust</a></li><li><a href="services/cable-tray.html">Cable tray fitting</a></li><li><a href="services/deck-covering.html">Deck covering &amp; anti-skid coating</a></li></ul></div>
+<div class="aae-footer__col"><h3>Company</h3><ul><li><a href="about.html">About</a></li><li><a href="capability.html">Capability &amp; plant</a></li><li><a href="equipment-hire.html">Equipment hire</a></li><li><a href="projects.html">Project references</a></li><li><a href="hse.html">HSE &amp; welfare</a></li></ul></div>
+<div class="aae-footer__col"><h3>Procurement</h3><ul><li><a href="rfq.html">Request a quotation</a></li><li><a href="contact.html">Contact</a></li><li><a href="tel:03462944433">0346 294 4433</a></li></ul></div></div>
+<div class="aae-footer__bottom"><span>© 2026 Al-Ashfaq Enterprises. Established 1998.</span><span>NTN / registration details on request</span></div></div></footer><div class="aae-nav__backdrop" data-backdrop hidden></div>
 <div class="aae-drawer" data-drawer hidden role="dialog" aria-modal="true" aria-label="Site menu">
 <div class="aae-drawer__top"><span class="aae-eyebrow">Menu</span>
 <button class="aae-drawer__close" data-drawer-close aria-label="Close menu"><i data-lucide="x"></i>Close</button></div>
@@ -593,9 +661,9 @@ body.is-locked{position:fixed;left:0;right:0;width:100%;overflow:hidden}
 <div class="aae-drawer__foot">
 <a class="aae-btn aae-btn--primary aae-btn--block" href="rfq.html"><span>Request a quotation</span></a>
 <a class="aae-btn aae-btn--outline aae-btn--block" href="tel:03462944433"><i data-lucide="phone"></i><span>0346 294 4433</span></a>
-</div></div><a class="aae-whatsapp" href="https://wa.me/923462944433?text=Enquiry%20from%20the%20Al-Ashfaq%20Enterprises%20website%20-%20" target="_blank" rel="noopener" aria-label="Contact Al-Ashfaq Enterprises on WhatsApp at 0346 294 4433"><i data-lucide="message-circle"></i>WhatsApp</a>
+</div></div>
+<a class="aae-whatsapp" href="https://wa.me/923462944433?text=Enquiry%20from%20the%20Al-Ashfaq%20Enterprises%20website%20-%20" target="_blank" rel="noopener" aria-label="Contact Al-Ashfaq Enterprises on WhatsApp at 0346 294 4433"><i data-lucide="message-circle"></i>WhatsApp</a>
 <script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"></script>
-
 <script>/* Al-Ashfaq Enterprises — site behaviour. No framework.
    1. mobile drawer (backdrop, Escape, focus trap, scroll lock)
    2. hero photograph cross-fade
@@ -712,11 +780,14 @@ body.is-locked{position:fixed;left:0;right:0;width:100%;overflow:hidden}
     window.addEventListener('load', check);
   }
 
-  /* ---- 4. stat count-up ---- */
+  /* ---- 4. stat count-up ----
+     Years are never animated: counting 0 → 1998 shows "1986" mid-flight, which
+     reads as a wrong founding date. Only quantities count up. */
   document.querySelectorAll('[data-count]').forEach((el) => {
     const raw = el.getAttribute('data-count');
+    const isYear = /^(19|20)\d{2}$/.test(raw.trim());
     const m = /^(\D*)(\d[\d,]*)(.*)$/.exec(raw);
-    if (!m || reduced) { el.textContent = raw; return; }
+    if (!m || reduced || isYear) { el.textContent = raw; return; }
     const target = Number(m[2].replace(/,/g, ''));
     const grouped = m[2].includes(',');
     const fmt = (v) => (grouped ? v.toLocaleString('en-US') : String(v));

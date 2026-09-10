@@ -114,11 +114,14 @@
     window.addEventListener('load', check);
   }
 
-  /* ---- 4. stat count-up ---- */
+  /* ---- 4. stat count-up ----
+     Years are never animated: counting 0 → 1998 shows "1986" mid-flight, which
+     reads as a wrong founding date. Only quantities count up. */
   document.querySelectorAll('[data-count]').forEach((el) => {
     const raw = el.getAttribute('data-count');
+    const isYear = /^(19|20)\d{2}$/.test(raw.trim());
     const m = /^(\D*)(\d[\d,]*)(.*)$/.exec(raw);
-    if (!m || reduced) { el.textContent = raw; return; }
+    if (!m || reduced || isYear) { el.textContent = raw; return; }
     const target = Number(m[2].replace(/,/g, ''));
     const grouped = m[2].includes(',');
     const fmt = (v) => (grouped ? v.toLocaleString('en-US') : String(v));

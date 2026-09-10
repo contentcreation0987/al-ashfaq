@@ -1,53 +1,31 @@
 # Al-Ashfaq Enterprises — deployable website
 
-Plain static site. No build step, no framework, no React. Every page is fully
-self-contained: the CSS and JS are inlined into each HTML file, so there is nothing
-for the server to 404.
+Plain static site. No build step, no framework, no React. Upload this folder and it works.
 
-## Service sequence
-
-The nine trades are ordered by **ship-repair execution sequence**, not alphabetically.
-Insulation is phase 06-07 because it is the closing phase of a docking, not the first:
-
-| # | Service | Page |
-|---|---|---|
-| 01 | Grit blasting / abrasive blasting (underwater hull & deck) | services/grit-blasting.html |
-| 02 | Bilges & tank cleaning and painting | services/tank-cleaning.html |
-| 03 | De-rusting & painting | services/de-rusting.html |
-| 04 | Erection / dismantling scaffolding (with enclosure cloth) | services/scaffolding.html |
-| 05 | Steel renewal & fabrication | services/steel-renewal.html |
-| 06 | Stud welding & insulation | services/stud-welding.html |
-| 07 | Insulation cladding on exhaust | services/exhaust-cladding.html |
-| 08 | Cable tray fitting | services/cable-tray.html |
-| 09 | Deck covering & anti-skid coating | services/deck-covering.html |
-
-The three old service URLs (surface-protection, insulation, fabrication) are kept as
-redirect pages so any link already shared keeps working.
-
-## Photography
-
-The photographs are the ones you supplied, now all in use.
-
-Seven carry a visible stock-library watermark (Adobe Stock, getty images, iStock,
-123RF). You asked for them to be used, so they are in place — but a procurement
-buyer reading a pre-qualification site does notice a watermark, so replacing these
-with your own site photographs is still the single highest-value change you can make:
-
-- tank-entry-01 (Adobe Stock) — tank manhole entry · used on the home page, services index and HSE page
-- tank-collage-01 — tank internals before/after · tank cleaning page
-- paint-hull-02 (getty images) — hull spray painting · held in assets, not currently placed
-- scaf-ship-01 / 02 / 03 (iStock) — ship scaffolding · home hero, services index, scaffolding page, projects page
-- deck-chip-01 (123RF) — deck chipping tool · deck covering page
-
-Two files are still held back, because they carry another company's advertising
-rather than a watermark, and publishing them would put a competitor's phone number
-on your site:
-
-- "Stud Welding Products 800-252-1919" printed across the stud-welding photo
-- "4½\" & 7\" Flap Discs available" printed across the de-rusting photo
-
-Both slots are filled with clean alternatives from your own upload. Send replacements
-for those two subjects and they will drop straight in at the same aspect ratio.
+```
+site/
+├── index.html          Home
+├── about.html          About
+├── capability.html     Capability & plant
+├── projects.html       Project references (no photographs, by design)
+├── hse.html            HSE & worker welfare
+├── equipment-hire.html Air compressor hire (PDS 655 / PDS 390)
+├── rfq.html            Request a quotation
+├── contact.html        Contact (same form + contact block)
+├── 404.html            Not found
+├── services/
+│   ├── index.html      Services hub — 6 cards + equipment-hire band
+│   ├── surface-protection.html
+│   ├── insulation.html
+│   ├── deck-covering.html
+│   ├── fabrication.html
+│   ├── cable-tray.html
+│   └── scaffolding.html
+├── styles.css          One stylesheet (design-system tokens + components, flattened)
+├── app.js              Drawer, hero cross-fade, scroll reveal, stat count-up, form
+├── vercel.json         Clean URLs + asset caching
+└── assets/             Logo + photographs
+```
 
 ## Deploying to Vercel
 
